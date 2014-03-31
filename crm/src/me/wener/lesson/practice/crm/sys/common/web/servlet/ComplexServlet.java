@@ -20,12 +20,6 @@ import java.util.Map;
 
 public abstract class ComplexServlet extends HttpServlet
 {
-    // private static final org.apache.logging.log4j.Logger log =
-    // org.apache.logging.log4j.Logger.getLogger(LogExample.class);
-    // private static final org.apache.commons.logging.Log log =
-    // org.apache.commons.logging.LogFactory.getLog(HttpServlet.class);
-    // private static final org.apache.log4j.Logger log =
-    // org.apache.log4j.Logger.getLogger(LogExample.class);
     private static final long serialVersionUID = 1L;
     protected Map<String, EnumMap<RequestMethod, Method>> actions = null;
 
