@@ -1,7 +1,7 @@
 package me.wener.lesson.practice.crm.sys.admin.dao.inter;
 
 import me.wener.lesson.practice.crm.sys.admin.entity.Admin;
-import me.wener.lesson.practice.crm.sys.common.IBaseDao;
+import me.wener.lesson.practice.crm.sys.common.dao.IBaseDao;
 
 import java.sql.SQLException;
 

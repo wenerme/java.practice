@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+    <!--使用regex进行匹配-->
+    <!--<constant name="struts.enable.SlashesInActionNames" value="true"/>-->
+    <!--<constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>-->
+    <!--<constant name="struts.patternMatcher" value="regex" />-->
+
+    <package name="userPackage" extends="struts-default" namespace="/sys/user">
+
+        <!--定义默认方法 -->
+        <default-action-ref name="list" />
+
+        <!--显示列表-->
+        <action name="list" method="list" class="me.wener.lesson.practice.crm.sys.user.action.UserAction">
+            <result type="dispatcher">/WEB-INF/jsp/sys/user/list.jsp</result>
+        </action>
+
+        <!--统一配置-->
+
+        <!--<action name="{action:enable|disable|search}" method="{action}" class="me.wener.lesson.practice.crm.sys.user.action.UserAction">-->
+            <!--<result type="redirectAction">list</result>-->
+        <!--</action>-->
+
+        <action name="enable" method="enable" class="me.wener.lesson.practice.crm.sys.user.action.UserAction">
+            <result type="redirectAction">list</result>
+        </action>
+
+        <action name="disable" method="disable" class="me.wener.lesson.practice.crm.sys.user.action.UserAction">
+            <result type="redirectAction">list</result>
+        </action>
+
+        <!--add 有可能返回 gotoPage,也可能需要 input-->
+        <action name="add" method="add" class="me.wener.lesson.practice.crm.sys.user.action.UserAction">
+            <result name="input">/WEB-INF/jsp/sys/user/add.jsp</result>
+            <result name="gotoPage">/WEB-INF/jsp/sys/user/add.jsp</result>
+
+            <result type="redirectAction">list</result>
+        </action>
+
+        <action name="search" method="search" class="me.wener.lesson.practice.crm.sys.user.action.UserAction">
+
+            <result type="redirectAction">list</result>
+        </action>
+
+    </package>
+
+</struts>

@@ -1,8 +1,8 @@
 package me.wener.lesson.practice.crm.sys.group.dao.impl;
 
 import com.j256.ormlite.stmt.QueryBuilder;
-import me.wener.lesson.practice.crm.sys.common.BaseDao;
-import me.wener.lesson.practice.crm.sys.common.Paging;
+import me.wener.lesson.practice.crm.sys.common.dao.BaseDao;
+import me.wener.lesson.practice.crm.sys.common.dao.Paging;
 import me.wener.lesson.practice.crm.sys.group.dao.inter.IGroupDao;
 import me.wener.lesson.practice.crm.sys.group.entity.Group;
 

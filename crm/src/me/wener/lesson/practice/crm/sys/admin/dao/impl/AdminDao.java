@@ -2,7 +2,7 @@ package me.wener.lesson.practice.crm.sys.admin.dao.impl;
 
 import me.wener.lesson.practice.crm.sys.admin.dao.inter.IAdminDao;
 import me.wener.lesson.practice.crm.sys.admin.entity.Admin;
-import me.wener.lesson.practice.crm.sys.common.BaseDao;
+import me.wener.lesson.practice.crm.sys.common.dao.BaseDao;
 
 import java.sql.SQLException;
 import java.util.HashMap;

@@ -52,7 +52,18 @@ action 的映射
 	* /group
 		* add/delete/list/edit/search [default: list]
 		
-		
+使用regex映射
+
+/sys/user
+		/add
+		/list/{pageNo:\d*}
+			这里的参数为页号
+		/delete/{id:\d+}
+		/edit/{id:\d+}
+			关于如何传递多个id
+				.+ 然后自己分析,或者使用post ?
+		/search/{keyword}
+			
 		
 action 的作用
 
@@ -82,28 +93,6 @@ applicationScope //应用上下文
 原先的 setAttribute/getAttribute 接受的参数
 也是名值对表示,所以返回 map 实际是对这些对象的封装.
 
-关于 GET 不应该传参数,这点不认同.
-GET 传参数的好处有
-	
-* 便于刷新(这点很重要)
-* 简单的参数处理方便,不需要表单
-* 阅读性更强,例如
-	* delete?id=123
-	* read?id=345
-	* 这种链接有时候会使用重写
-	* delete/article/123
-	* search/name/wener
-	* page/2
-	* 这样的url阅读性更高,更友好
-* GET 传参的连接可以作为书签,或另存为URL
-* 即此类 URL 可分发
-
-不好的
-
-* 数据有限制
-	* 本来只是用于处理小数据
-* 编码难以处理
-	* 只要限制页面使用编码就好了
-* 不安全
-	* 相对post没那么安全,
-		但是 GET 主要用于传递简单参数
+chats
+======
+使用 session 对象和 application 对象实现聊天

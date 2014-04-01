@@ -1,7 +1,7 @@
 package me.wener.lesson.practice.crm.sys.group.web.servlet;
 
 import com.google.common.base.Strings;
-import me.wener.lesson.practice.crm.sys.common.Paging;
+import me.wener.lesson.practice.crm.sys.common.dao.Paging;
 import me.wener.lesson.practice.crm.sys.common.web.*;
 import me.wener.lesson.practice.crm.sys.common.web.servlet.ListDominateServlet;
 import me.wener.lesson.practice.crm.sys.group.entity.Group;
@@ -33,7 +33,7 @@ public class GroupActionServlet extends ListDominateServlet<Group>
         GroupService serv = getService();
         for (String id : ids)
         {
-            serv.deleteById(Integer.parseInt(id));
+            serv.delete(Integer.parseInt(id));
         }
         list(request, response);
 

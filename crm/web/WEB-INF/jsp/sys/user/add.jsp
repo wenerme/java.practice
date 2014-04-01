@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 	<head>
 		<title>人员添加</title>
@@ -29,7 +30,7 @@
 		</script>
 	</head>
 	<body>
-		<form name="form1" method="post" action="${pageContext.request.contextPath}/UserAction?action=add">
+		<form name="form1" method="post" action="${pageContext.request.contextPath}/sys/user/add">
 			<div class="mtitle">
 				<div class="mtitle-row">
 					&nbsp;
@@ -85,15 +86,16 @@
 										英文名*：
 									</td>
 									<td>
-										<input name="enname" type="text" id="name" style="width: 90%"
-											value="">
+										<input name="item.enname" type="text" id="name" style="width: 90%"
+											value="${item.enname}">
 									</td>
 									<td class="red">
 										中文名*：
 									</td>
 									<td>
-										<input name="cnname" type="text" class="input" id="cnname"
-											style="width: 90%" value="">
+										<input name="item.cnname" type="text" class="input" id="cnname"
+											style="width: 90%" value="${item.cnname}">
+                                        <s:fielderror fieldName="item.cnname"></s:fielderror>
 									</td>
 								</tr>
 								<tr>
@@ -101,8 +103,9 @@
 										密码*：
 									</td>
 									<td>
-										<input name="password" type="password" id="password"
+										<input name="item.password" type="password" id="password"
 											style="width: 90%" value="">
+                                        <s:fielderror fieldName="item.cnname"></s:fielderror>
 									</td>
 									<td>
 										推荐人：
@@ -124,7 +127,7 @@
 										电子邮件*：
 									</td>
 									<td>
-										<input name="email" type="text" class="input" id="email"
+										<input name="item.email" type="text" class="input" id="email"
 											style="width: 90%" value="">
 									</td>
 								</tr>
@@ -197,14 +200,14 @@
 										起始有效期*：
 									</td>
 									<td>
-										<input type='text' id='beginDate' name='beginDate'
+										<input type='text' id='beginDate' name='item.beginDate'
 											class="dateClassStyle" value='' style='width: 90%'>
 									</td>
 									<td class="red">
 										终止有效期*：
 									</td>
 									<td>
-										<input type='text' id='endDate' name='endDate'
+										<input type='text' id='endDate' name='item.endDate'
 											class="dateClassStyle" value='' style='width: 90%'>
 									</td>
 								</tr>
@@ -215,7 +218,7 @@
 										所属部门*：
 									</td>
 									<td>
-										<select id="groupId" name="group.id" style='width: 90%'>
+										<select id="groupId" name="item.group.id" style='width: 90%'>
 											
 												<!-- data -->
 											

@@ -1,4 +1,4 @@
-package me.wener.lesson.practice.crm.sys.common;
+package me.wener.lesson.practice.crm.sys.common.dao;
 
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
@@ -6,6 +6,7 @@ import com.j256.ormlite.jdbc.DataSourceConnectionSource;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.SneakyThrows;
+import me.wener.lesson.practice.crm.sys.common.DBHelper;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 

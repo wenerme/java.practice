@@ -1,4 +1,4 @@
-package me.wener.lesson.practice.crm.sys.common;
+package me.wener.lesson.practice.crm.sys.common.dao;
 
 import java.sql.SQLException;
 import java.util.List;

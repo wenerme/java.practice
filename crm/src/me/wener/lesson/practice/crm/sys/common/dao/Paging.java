@@ -1,4 +1,4 @@
-package me.wener.lesson.practice.crm.sys.common;
+package me.wener.lesson.practice.crm.sys.common.dao;
 
 import com.google.common.base.Joiner;
 import com.j256.ormlite.dao.Dao;

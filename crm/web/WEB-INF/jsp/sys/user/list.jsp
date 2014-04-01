@@ -16,19 +16,19 @@
         function enable()
         {
             //window.alert("启用");
-            $("#form2").attr("action","${pageContext.request.contextPath}/UserAction?action=enable");
+            $("#form2").attr("action","${pageContext.request.contextPath}/sys/item/enable");
             $("#form2").submit();
         }
         function disable()
         {
             //window.alert("停用");
-            $("#form2").attr("action","${pageContext.request.contextPath}/UserAction?action=disable");
+            $("#form2").attr("action","${pageContext.request.contextPath}/sys/item/disable");
             document.form2.submit();
         }
         function deleteIds()
         {
             //window.alert("删除");
-            $("#form2").attr("action","${pageContext.request.contextPath}/UserAction?action=delete");
+            $("#form2").attr("action","${pageContext.request.contextPath}/sys/item/delete");
             document.form2.submit();
         }
         function search()
@@ -69,7 +69,7 @@
     <tr>
         <td colspan="2">
             <form name="form1" method="post"
-                  action="${pageContext.request.contextPath}/UserAction?action=search">
+                  action="${pageContext.request.contextPath}/sys/user/search">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0"
                        name="base" id="base">
                     <tr>
@@ -183,7 +183,7 @@
     <button type='button' class='button'
             onMouseOver="this.className='button_over';"
             onMouseOut="this.className='button';"
-            onClick="forward('${pageContext.request.contextPath}/sys/user/add.jsp')">
+            onClick="forward('${pageContext.request.contextPath}/sys/item/add.jsp')">
         <img
                 src="${pageContext.request.contextPath}/ui/images/button/xinjian.png"
                 border='0' align='absmiddle'>
@@ -251,7 +251,7 @@
                 </td>
             </tr>
 
-            <c:forEach var="user" items="${page.items}">
+            <c:forEach var="user" items="${sessionScope.page.items}">
 
                 <tr>
                     <td>
@@ -321,24 +321,24 @@
 
                 <a style="decoration:none"
                    class="${page.hasPrevious() ?"":"disabled" }"
-                   href="${pageContext.request.contextPath}/UserAction?action=list&pageNo=1"
+                   href="${pageContext.request.contextPath}/sys/user/list/1"
                    style="cursor: hand">首页</a>
 
                 <a style="decoration:none"
                    class="${page.hasNext() ?"":"disabled" }"
-                   href="${pageContext.request.contextPath}/UserAction?action=list&pageNo=${page.currentPageNo + 1}"
+                   href="${pageContext.request.contextPath}/sys/item/list/${page.currentPageNo + 1}"
                    style="cursor: hand">下一页</a>
 
                 ${page.currentPageNo}/${page.pageCount}/${page.itemCount}
 
                 <a style="decoration:none"
                    class="${page.hasPrevious() ?"":"disabled" }"
-                   href="${pageContext.request.contextPath}/UserAction?action=list&pageNo=${page.currentPageNo - 1}"
+                   href="${pageContext.request.contextPath}/sys/item/list/${page.currentPageNo - 1}"
                    style="cursor: hand">上一页</a>
 
                 <a style="decoration:none"
                    class="${page.hasNext() ?"":"disabled" }"
-                   href="${pageContext.request.contextPath}/UserAction?action=list&pageNo=${page.pageCount}"
+                   href="${pageContext.request.contextPath}/sys/item/list/${page.pageCount}"
                    style="cursor: hand">尾页</a>
 
 

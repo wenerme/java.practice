@@ -1,7 +1,7 @@
 package me.wener.lesson.practice.crm.sys.group.service.impl;
 
 import com.google.common.base.Joiner;
-import me.wener.lesson.practice.crm.sys.common.Paging;
+import me.wener.lesson.practice.crm.sys.common.dao.Paging;
 import me.wener.lesson.practice.crm.sys.group.dao.impl.GroupDao;
 import me.wener.lesson.practice.crm.sys.group.entity.Group;
 import me.wener.lesson.practice.crm.sys.group.service.inter.IGroupService;
@@ -49,6 +49,12 @@ public class GroupService implements IGroupService
     }
 
     @Override
+    public void delete(int id)
+    {
+
+    }
+
+    @Override
     public Group add(Group group) throws Exception
     {
         try
@@ -67,13 +73,6 @@ public class GroupService implements IGroupService
             throws Exception
     {
         return new GroupDao().findGroupByDepartment(department);
-    }
-
-    @Override
-    public void deleteById(int id) throws Exception
-    {
-        new GroupDao().deleteById(id);
-
     }
 
 }

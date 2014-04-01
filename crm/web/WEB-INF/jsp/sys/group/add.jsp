@@ -71,7 +71,7 @@
 										部门名称
 									</td>
 									<td>
-										<input name="department" type="text" class="input"
+										<input name="item.department" type="text" class="input"
 											style="width: 90%">
 									</td>
 
@@ -79,7 +79,7 @@
 										部门负责人
 									</td>
 									<td>
-										<input name="principal" type="text" class="input"
+										<input name="item.principal" type="text" class="input"
 											style="width: 90%">
 									</td>
 
@@ -89,7 +89,7 @@
 										部门职能
 									</td>
 									<td colspan="3">
-										<textarea name="functional" rows="3" style="width: 96%"></textarea>
+										<textarea name="item.functional" rows="3" style="width: 96%"></textarea>
 									</td>
 								</tr>
 								<tr>
@@ -97,7 +97,7 @@
 										备注
 									</td>
 									<td colspan="3">
-										<textarea name="remark" rows="3" id="remark"
+										<textarea name="item.remark" rows="3" id="remark"
 											style="width: 96%"></textarea>
 									</td>
 								</tr>
