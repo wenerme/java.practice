@@ -41,9 +41,8 @@
             <result type="redirectAction">list</result>
         </action>
 
-        <action name="search" method="search" class="me.wener.lesson.practice.crm.sys.user.action.UserAction">
-
-            <result type="redirectAction">list</result>
+        <action name="search" method="search" class="me.wener.lesson.practice.crm.sys.group.action.GroupAction">
+            <result type="chain">list</result>
         </action>
 
     </package>

@@ -143,7 +143,7 @@
                                     ${condition.enabled == false?"checked":""}>
                             <label for="disable">停用</label>
                             <input type='radio'
-                                   name="enabled" id='all_state' value='null'
+                                   name="condition.enabled" id='all_state' value=''
                                    class='radio'
                                     ${condition.enabled == null?"checked":""}>
 

@@ -30,16 +30,19 @@ public abstract class GeneralListAction<T,C extends ISearchCondition>
     @Setter
     private T item = null;
 
-    @Getter
     @Setter
     private C condition = null;
 
-    private Class<T> type;
+    @Getter
+    private Class<T> itemType;
+    @Getter
+    private Class<C> conditionType;
 
     protected GeneralListAction()
     {
         ParameterizedType su = (ParameterizedType) this.getClass().getGenericSuperclass();
-        type = (Class<T>) su.getActualTypeArguments()[0];
+        itemType = (Class<T>) su.getActualTypeArguments()[0];
+        conditionType = (Class<C>) su.getActualTypeArguments()[1];
     }
 
     /**
@@ -120,7 +123,7 @@ public abstract class GeneralListAction<T,C extends ISearchCondition>
     {
         Object o = ActionContext.getContext().getSession().get("page");
         Paging<T> page = null;
-        if (o instanceof Paging && ((Paging) o).getType().equals(getType()))
+        if (o instanceof Paging && ((Paging) o).getType().equals(getItemType()))
         {
             page = (Paging<T>) o;
         } else
@@ -142,8 +145,22 @@ public abstract class GeneralListAction<T,C extends ISearchCondition>
 
     protected abstract IGeneralService<T,C> getService();
 
-    protected Class<T> getType()
+    @SuppressWarnings("unchecked")// 已经确保了类型转换的正确性
+    public C getCondition() throws IllegalAccessException, InstantiationException
     {
-        return type;
+        // 必须确保 condition 类型正确
+        if (condition != null)
+            return condition;
+
+        Object o = ActionContext.getContext().getSession().get("condition");
+
+        if (o != null && conditionType.isAssignableFrom(o.getClass()))
+            condition = (C) o;
+        else
+            condition = conditionType.newInstance();
+
+        ActionContext.getContext().getSession().put("condition",condition);
+
+        return condition;
     }
 }
