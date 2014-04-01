@@ -5,7 +5,6 @@ import java.util.List;
 
 public interface IBaseDao<T>
 {
-
     public abstract List<T> selectAll() throws SQLException;
 
     public abstract T selectById(int id) throws SQLException;

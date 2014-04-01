@@ -5,13 +5,14 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import lombok.Getter;
 import lombok.Setter;
+import me.wener.lesson.practice.crm.sys.common.dao.ISearchCondition;
 import me.wener.lesson.practice.crm.sys.common.dao.Paging;
-import me.wener.lesson.practice.crm.sys.common.web.IGeneralService;
+import me.wener.lesson.practice.crm.sys.common.dao.IGeneralService;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.Map;
 
-public abstract class GeneralAction<T>
+public abstract class GeneralListAction<T>
         extends ActionSupport
 {
     @Getter
@@ -29,9 +30,13 @@ public abstract class GeneralAction<T>
     @Setter
     private T item = null;
 
+    @Getter
+    @Setter
+    private ISearchCondition condition = null;
+
     private Class<T> type;
 
-    protected GeneralAction()
+    protected GeneralListAction()
     {
         ParameterizedType su = (ParameterizedType) this.getClass().getGenericSuperclass();
         type = (Class<T>) su.getActualTypeArguments()[0];
@@ -91,6 +96,13 @@ public abstract class GeneralAction<T>
         if (item == null)
             return "gotoPage";
         getService().add(item);
+        return this.SUCCESS;
+    }
+
+
+    public String search() throws Exception
+    {
+
         return this.SUCCESS;
     }
 

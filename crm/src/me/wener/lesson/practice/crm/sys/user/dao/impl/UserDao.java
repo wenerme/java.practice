@@ -48,16 +48,16 @@ public class UserDao extends BaseDao<User>
 
 
         UserSearchCondition condition = new UserSearchCondition();
-        page = dao.searchByCondition(condition);
+        page = dao.search(condition);
         System.out.println("No condition Users:\n" + Joiner.on("\n").join(page.getItems()));
         condition.setCnname("文");
-        page = dao.searchByCondition(condition);
+        page = dao.search(condition);
         System.out.println("With condition Users:\n" + Joiner.on("\n").join(page.getItems()));
 
     }
 
     @Override
-    public Paging<User> searchByCondition(UserSearchCondition condition) throws SQLException
+    public Paging<User> search(UserSearchCondition condition) throws SQLException
     {
 
 

@@ -1,7 +1,7 @@
 package me.wener.lesson.practice.crm.sys.common.web.servlet;
 
 import me.wener.lesson.practice.crm.sys.common.dao.Paging;
-import me.wener.lesson.practice.crm.sys.common.web.IGeneralService;
+import me.wener.lesson.practice.crm.sys.common.dao.IGeneralService;
 import me.wener.lesson.practice.crm.sys.common.web.RequestMethod;
 import me.wener.lesson.practice.crm.sys.common.web.ServletAction;
 import me.wener.lesson.practice.crm.sys.common.web.Sessions;

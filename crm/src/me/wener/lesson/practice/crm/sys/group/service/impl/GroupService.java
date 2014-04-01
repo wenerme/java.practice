@@ -2,6 +2,7 @@ package me.wener.lesson.practice.crm.sys.group.service.impl;
 
 import com.google.common.base.Joiner;
 import me.wener.lesson.practice.crm.sys.common.dao.Paging;
+import me.wener.lesson.practice.crm.sys.group.GroupSearchCondition;
 import me.wener.lesson.practice.crm.sys.group.dao.impl.GroupDao;
 import me.wener.lesson.practice.crm.sys.group.entity.Group;
 import me.wener.lesson.practice.crm.sys.group.service.inter.IGroupService;
@@ -49,9 +50,9 @@ public class GroupService implements IGroupService
     }
 
     @Override
-    public void delete(int id)
+    public void delete(int id) throws SQLException
     {
-
+        new GroupDao().deleteById(id);
     }
 
     @Override
@@ -66,6 +67,13 @@ public class GroupService implements IGroupService
             e.printStackTrace();
             throw e;
         }
+    }
+
+    @Override
+    public Paging<Group> search(GroupSearchCondition condition) throws Exception
+    {
+        // TODO 实现搜索
+        return null;
     }
 
     @Override

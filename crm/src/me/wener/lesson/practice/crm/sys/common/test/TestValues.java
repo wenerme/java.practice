@@ -16,6 +16,8 @@ import java.util.Date;
 
 import static org.junit.Assert.assertTrue;
 
+
+
 public class TestValues
 {
     @Test
@@ -73,4 +75,21 @@ public class TestValues
 
 
 }
-
+//
+//class CA
+//{
+//}
+//
+//class CB extends CA
+//{
+//}
+//interface IG
+//{
+//    public <T extends CA> void set(T val);
+//}
+//class CIG implements IG
+//{
+//    public void set(CB val)
+//    {
+//    }
+//}

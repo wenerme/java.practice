@@ -19,8 +19,6 @@ public class UserService implements IUserService
         int id = page.getItems().get(0).getId();
         service.disable(id);
         System.out.println(page.getItems());
-
-
     }
 
     @Override
@@ -30,9 +28,9 @@ public class UserService implements IUserService
     }
 
     @Override
-    public Paging<User> searchByCondition(UserSearchCondition condition) throws SQLException
+    public Paging<User> search(UserSearchCondition condition) throws SQLException
     {
-        return new UserDao().searchByCondition(condition);
+        return new UserDao().search(condition);
     }
 
     @Override

@@ -65,7 +65,7 @@ public class UserActionServlet extends ListDominateServlet<User>
 
         request.getSession().setAttribute("condition", condition);
 
-        showList(getService().searchByCondition(condition), request, response);
+        showList(getService().search(condition), request, response);
     }
 
     @ServletAction(method = {RequestMethod.GET, RequestMethod.POST}, errorMessage = "启用失败,请返回重试")

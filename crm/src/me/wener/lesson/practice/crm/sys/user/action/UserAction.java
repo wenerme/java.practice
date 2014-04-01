@@ -1,11 +1,11 @@
 package me.wener.lesson.practice.crm.sys.user.action;
 
 
-import me.wener.lesson.practice.crm.sys.common.action.GeneralAction;
+import me.wener.lesson.practice.crm.sys.common.action.GeneralListAction;
 import me.wener.lesson.practice.crm.sys.user.entity.User;
 import me.wener.lesson.practice.crm.sys.user.service.impl.UserService;
 
-public class UserAction extends GeneralAction<User>
+public class UserAction extends GeneralListAction<User>
 {
     /**
      * 禁用操作

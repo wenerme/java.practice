@@ -90,7 +90,7 @@
 			<button type='button' class='button'
 				onMouseOver="this.className='button_over';"
 				onMouseOut="this.className='button';"
-				onClick="forward('${pageContext.request.contextPath}/sys/group/add.jsp')">
+				onClick="forward('${pageContext.request.contextPath}/sys/group/add')">
 				<img
 					src="${pageContext.request.contextPath}/ui/images/button/xinjian.png"
 					border='0' align='absmiddle'>
@@ -111,7 +111,7 @@
 		<!-- list -->
 		<div class="border">
 			<form name="form2" method="post"
-				  action="${pageContext.request.contextPath}//sys/group/delete">
+				  action="${pageContext.request.contextPath}/sys/group/delete">
 				<table width="100%" border="0" cellspacing="0" cellpadding="0"
 					id="PowerTable" class="PowerTable">
 					<!-- title -->

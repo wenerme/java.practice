@@ -10,5 +10,5 @@ import java.sql.SQLException;
 public interface IUserDao extends IBaseDao<User>
 {
 
-    public Paging<User> searchByCondition(UserSearchCondition condition) throws SQLException;
+    public Paging<User> search(UserSearchCondition condition) throws SQLException;
 }
