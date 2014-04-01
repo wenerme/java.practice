@@ -12,7 +12,7 @@ import me.wener.lesson.practice.crm.sys.common.dao.IGeneralService;
 import java.lang.reflect.ParameterizedType;
 import java.util.Map;
 
-public abstract class GeneralListAction<T>
+public abstract class GeneralListAction<T,C extends ISearchCondition>
         extends ActionSupport
 {
     @Getter
@@ -121,7 +121,7 @@ public abstract class GeneralListAction<T>
         return page;
     }
 
-    protected abstract IGeneralService<T> getService();
+    protected abstract IGeneralService<T,C> getService();
 
     protected Class<T> getType()
     {
