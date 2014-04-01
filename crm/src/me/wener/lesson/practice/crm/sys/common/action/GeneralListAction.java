@@ -10,11 +10,11 @@ import me.wener.lesson.practice.crm.sys.common.dao.Paging;
 import me.wener.lesson.practice.crm.sys.common.dao.IGeneralService;
 
 import java.lang.reflect.ParameterizedType;
-import java.util.Map;
 
 public abstract class GeneralListAction<T,C extends ISearchCondition>
         extends ActionSupport
 {
+    public static final String GOTO_PAGE = "gotoPage";
     @Getter
     @Setter
     private String id = null;
@@ -32,7 +32,7 @@ public abstract class GeneralListAction<T,C extends ISearchCondition>
 
     @Getter
     @Setter
-    private ISearchCondition condition = null;
+    private C condition = null;
 
     private Class<T> type;
 
@@ -63,10 +63,11 @@ public abstract class GeneralListAction<T,C extends ISearchCondition>
      */
     public String list() throws Exception
     {
-        System.out.println("In list type is "+ type);
-        ActionContext context = ActionContext.getContext();
-        Map<String, Object> session = context.getSession();
-        session.put("page", getService().findAll());
+        // getPage 能确保 page 有值
+        if (pageNo != null)
+            getPage().setCurrentPageNo(pageNo);
+        else
+            getPage();
 
         return this.SUCCESS;
     }
@@ -89,23 +90,32 @@ public abstract class GeneralListAction<T,C extends ISearchCondition>
 
     /**
      * 添加操作
-     * @return 如果 item 为 null,会返回 gotoPage
+     * @return 如果 item 为 null,会返回 {@link GeneralListAction#GOTO_PAGE}
      */
     public String add() throws Exception
     {
         if (item == null)
-            return "gotoPage";
+            return GOTO_PAGE;
+
         getService().add(item);
         return this.SUCCESS;
     }
 
 
+    /**
+     * 搜索操作
+     */
     public String search() throws Exception
     {
-
+        if (getCondition() != null)// 只有在有条件时才进行搜索
+        {
+            setPage( getService().search( getCondition()));
+            ActionContext.getContext().getSession().put("condition", getCondition());
+        }
         return this.SUCCESS;
     }
 
+    @SuppressWarnings("unchecked")// 已判断 object 转换到 page 的正确性
     protected Paging<T> getPage() throws Exception
     {
         Object o = ActionContext.getContext().getSession().get("page");
@@ -115,10 +125,19 @@ public abstract class GeneralListAction<T,C extends ISearchCondition>
             page = (Paging<T>) o;
         } else
         {
-            page = getService().findAll();
+            page = getService().all();
         }
+        ActionContext.getContext().getSession().put("page", page);
 
         return page;
+    }
+
+    protected void setPage(Paging<T> page) throws Exception
+    {
+        if (page == null)
+            throw  new NullPointerException("Page must not null.");
+
+        ActionContext.getContext().getSession().put("page", page);
     }
 
     protected abstract IGeneralService<T,C> getService();

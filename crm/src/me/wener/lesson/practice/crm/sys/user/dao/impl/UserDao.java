@@ -1,6 +1,7 @@
 package me.wener.lesson.practice.crm.sys.user.dao.impl;
 
 import com.google.common.base.Joiner;
+import com.google.common.base.Strings;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.Where;
 import com.j256.ormlite.table.TableUtils;
@@ -60,19 +61,22 @@ public class UserDao extends BaseDao<User>
     public Paging<User> search(UserSearchCondition condition) throws SQLException
     {
 
-
         // 如果有一个值为非空 才使用 where
         if (condition.getCnname() != null || condition.getEnname() != null || condition.getEnabled() != null || condition.getGroupId() != null)
         {
             QueryBuilder<User, Integer> qb = getDao().queryBuilder();
             Where<User, Integer> where = qb.where();
-            if (condition.getCnname() != null)
+
+            if (!Strings.isNullOrEmpty(condition.getCnname()))
                 where.like(User.FIELD_CNNAME, like(condition.getCnname())).and();
-            if (condition.getEnname() != null)
+
+            if (!Strings.isNullOrEmpty(condition.getEnname()))
                 where.like(User.FIELD_ENNAME, like(condition.getEnname())).and();
+
             if (condition.getEnabled() != null)
                 where.like(User.FIELD_ENABLED, condition.getEnabled()).and();
-            if (condition.getGroupId() != null)
+
+            if (!Strings.isNullOrEmpty(condition.getGroupId()))
                 where.like(User.FIELD_GROUP, condition.getGroupId()).and();
 
             where.raw("1 = 1");// 补足 and

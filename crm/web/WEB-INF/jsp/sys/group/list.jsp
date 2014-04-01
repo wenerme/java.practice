@@ -55,7 +55,7 @@
 							<tr>
 								<td width="38%" nowrap="nowrap">
 									部门名称：
-									<input name="department" type="text" id="name" value="${department}"
+									<input name="condition.department" type="text" id="name" value="${condition.department}"
 										style="width: 140px">
 								</td>
 								<td width="39%" nowrap="nowrap">

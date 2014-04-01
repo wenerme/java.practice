@@ -1,86 +1,28 @@
 package me.wener.lesson.practice.crm.sys.group.service.impl;
 
 import com.google.common.base.Joiner;
+import me.wener.lesson.practice.crm.sys.common.dao.GeneralService;
 import me.wener.lesson.practice.crm.sys.common.dao.Paging;
 import me.wener.lesson.practice.crm.sys.group.GroupSearchCondition;
 import me.wener.lesson.practice.crm.sys.group.dao.impl.GroupDao;
+import me.wener.lesson.practice.crm.sys.group.dao.inter.IGroupDao;
 import me.wener.lesson.practice.crm.sys.group.entity.Group;
 import me.wener.lesson.practice.crm.sys.group.service.inter.IGroupService;
 
-import java.sql.SQLException;
 import java.util.List;
 
-public class GroupService implements IGroupService
+public class GroupService extends GeneralService<Group, GroupSearchCondition> implements IGroupService
 {
-
-    public static void main(String[] args) throws Exception
-    {
-        GroupService serv = new GroupService();
-        Paging<Group> page = serv.findAll();
-
-        System.out.println(page);
-        while (page.hasNext())
-        {
-            System.out.printf("\nPageNO: %d", page.getCurrentPageNo());
-            List<Group> list = page.next();
-            System.out.printf(" Items:\n%s", Joiner.on("\n").join(list));
-        }
-
-        page = serv.findGroupByDepartment("财务部");
-        System.out.println("\n\n" + page);
-        while (page.hasNext())
-        {
-            System.out.printf("\nPageNO: %d", page.getCurrentPageNo());
-            List<Group> list = page.next();
-            System.out.printf(" Items:\n%s", Joiner.on("\n").join(list));
-        }
-    }
-
     @Override
-    public Paging<Group> findAll() throws Exception
+    protected IGroupDao getDao()
     {
-        try
-        {
-            return new GroupDao().selectPage();
-        } catch (SQLException e)
-        {
-            e.printStackTrace();
-            throw e;
-        }
-    }
-
-    @Override
-    public void delete(int id) throws SQLException
-    {
-        new GroupDao().deleteById(id);
-    }
-
-    @Override
-    public Group add(Group group) throws Exception
-    {
-        try
-        {
-            new GroupDao().insert(group);
-            return group;
-        } catch (SQLException e)
-        {
-            e.printStackTrace();
-            throw e;
-        }
+        return new GroupDao();
     }
 
     @Override
     public Paging<Group> search(GroupSearchCondition condition) throws Exception
     {
-        // TODO 实现搜索
-        return null;
-    }
-
-    @Override
-    public Paging<Group> findGroupByDepartment(String department)
-            throws Exception
-    {
-        return new GroupDao().findGroupByDepartment(department);
+        return new GroupDao().search(condition);
     }
 
 }

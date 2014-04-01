@@ -14,6 +14,10 @@ import javax.persistence.Id;
 @DatabaseTable(tableName = "groups")
 public class Group
 {
+    public final static String FIELD_DEPARTMENT = "department";
+    public final static String FIELD_PRINCIPAL = "principal";
+    public final static String FIELD_FUNCTIONAL = "functional";
+    public final static String FIELD_REMARK = "remark";
     @Id
     @GeneratedValue
     @DatabaseField(generatedId = true)

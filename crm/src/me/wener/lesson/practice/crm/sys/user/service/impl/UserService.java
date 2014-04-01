@@ -1,43 +1,29 @@
 package me.wener.lesson.practice.crm.sys.user.service.impl;
 
+import me.wener.lesson.practice.crm.sys.common.dao.GeneralService;
+import me.wener.lesson.practice.crm.sys.common.dao.IBaseDao;
+import me.wener.lesson.practice.crm.sys.common.dao.IGeneralService;
 import me.wener.lesson.practice.crm.sys.common.dao.Paging;
 import me.wener.lesson.practice.crm.sys.user.UserSearchCondition;
 import me.wener.lesson.practice.crm.sys.user.dao.impl.UserDao;
+import me.wener.lesson.practice.crm.sys.user.dao.inter.IUserDao;
 import me.wener.lesson.practice.crm.sys.user.entity.User;
 import me.wener.lesson.practice.crm.sys.user.service.inter.IUserService;
 
 import java.sql.SQLException;
 
-public class UserService implements IUserService
+public class UserService extends GeneralService<User,UserSearchCondition> implements IUserService
 {
-
-    public static void main(String[] args) throws Exception
-    {
-        UserService service = new UserService();
-        Paging<User> page = service.findAll();
-        System.out.println(page.getItems());
-        int id = page.getItems().get(0).getId();
-        service.disable(id);
-        System.out.println(page.getItems());
-    }
-
     @Override
-    public Paging<User> findAll() throws SQLException
+    protected IUserDao getDao()
     {
-        return new UserDao().selectPage();
+        return new UserDao();
     }
 
     @Override
     public Paging<User> search(UserSearchCondition condition) throws SQLException
     {
         return new UserDao().search(condition);
-    }
-
-    @Override
-    public User add(User user) throws Exception
-    {
-        new UserDao().insert(user);
-        return user;
     }
 
     @Override
@@ -54,12 +40,6 @@ public class UserService implements IUserService
         User user = new UserDao().selectById(id);
         user.setEnabled(true);
         new UserDao().update(user);
-    }
-
-    @Override
-    public void delete(int id) throws Exception
-    {
-        new UserDao().deleteById(id);
     }
 
 }

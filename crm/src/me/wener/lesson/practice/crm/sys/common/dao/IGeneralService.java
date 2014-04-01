@@ -10,7 +10,7 @@ import me.wener.lesson.practice.crm.sys.common.dao.Paging;
  */
 public interface IGeneralService<T,C extends ISearchCondition>
 {
-    Paging<T> findAll() throws Exception;
+    Paging<T> all() throws Exception;
     void delete(int id) throws Exception;
     T add(T item) throws Exception;
     Paging<T> search(C condition) throws Exception;

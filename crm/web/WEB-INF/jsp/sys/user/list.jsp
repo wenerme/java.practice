@@ -77,21 +77,21 @@
                             英文名：
                         </td>
                         <td width="12%" nowrap="nowrap">
-                            <input name="enname" type="text" id="name" value="${condition.enname}"
+                            <input name="condition.enname" type="text" id="name" value="${condition.enname}"
                                    style="width: 100px">
                         </td>
                         <td width="13%" nowrap="nowrap">
                             中文名：
                         </td>
                         <td width="12%" nowrap="nowrap">
-                            <input name="cnname" type="text" id="cnname" value="${condition.cnname}"
+                            <input name="cnname" type="text" id="condition.cnname" value="${condition.cnname}"
                                    style="width: 100px">
                         </td>
                         <td width="13%" nowrap="nowrap">
                             所属部门：
                         </td>
                         <td width="12%" nowrap="nowrap">
-                            <select id="groupId" name="groupId" style="width: 90%">
+                            <select id="groupId" name="condition.groupId" style="width: 90%">
 
                                 <option value=''>
                                     --------------
@@ -135,15 +135,15 @@
                             状态：
                         </td>
                         <td width="20%">
-                            <input type='radio' name="enabled" id='enable' value='true'
+                            <input type='radio' name="condition.enabled" id='enable' value='true'
                                    class='radio'
                                    ${condition.enabled?"checked":""}><label for="enable">启用</label>
-                            <input type='radio' name="enabled" id='disable' value='false'
+                            <input type='radio' name="condition.enabled" id='disable' value='false'
                                    class='radio'
                                     ${condition.enabled == false?"checked":""}>
                             <label for="disable">停用</label>
                             <input type='radio'
-                                   name="enabled" id='all_state' value='all'
+                                   name="enabled" id='all_state' value='null'
                                    class='radio'
                                     ${condition.enabled == null?"checked":""}>
 
