@@ -16,7 +16,7 @@
 	</head>
 	<body>
 		<form name="form1" method="post"
-			action="${pageContext.request.contextPath}/GroupAction?action=addGroup">
+			action="${pageContext.request.contextPath}/sys/group/add">
 			<div class="mtitle">
 				<div class="mtitle-row">
 					&nbsp;
@@ -36,7 +36,7 @@
 				<button type='button' class='button'
 					onMouseOver="this.className='button_over';"
 					onMouseOut="this.className='button';"
-					onClick="forward('findAllSysGroupRequest')">
+					onClick="forward('list')">
 					<img
 						src="${pageContext.request.contextPath}/ui/images/button/fanhui.png"
 						border='0' align='absmiddle'>

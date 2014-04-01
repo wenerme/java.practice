@@ -9,7 +9,7 @@
     <!--<constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>-->
     <!--<constant name="struts.patternMatcher" value="regex" />-->
 
-    <package name="userPackage" extends="struts-default" namespace="/sys/group">
+    <package name="groupPackage" extends="struts-default" namespace="/sys/group">
 
         <!--定义默认方法 -->
         <default-action-ref name="list" />

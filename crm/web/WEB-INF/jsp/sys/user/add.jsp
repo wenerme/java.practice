@@ -23,7 +23,7 @@
 				window.location.href = url;
 			}
 			function addUser(){
-				window.alert("保存");
+				// window.alert("保存");
 				//提交表单
 				document.form1.submit();
 			}
@@ -51,7 +51,7 @@
 				<button type='button' class='button'
 					onMouseOver="this.className='button_over';"
 					onMouseOut="this.className='button';"
-					onClick="forward('list.jsp')">
+					onClick="forward('list')">
 					<img
 						src="${pageContext.request.contextPath}/ui/images/button/fanhui.png"
 						border='0' align='absmiddle'>

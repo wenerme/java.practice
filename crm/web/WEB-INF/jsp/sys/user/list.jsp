@@ -16,19 +16,19 @@
         function enable()
         {
             //window.alert("启用");
-            $("#form2").attr("action","${pageContext.request.contextPath}/sys/item/enable");
+            $("#form2").attr("action","${pageContext.request.contextPath}/sys/user/enable");
             $("#form2").submit();
         }
         function disable()
         {
             //window.alert("停用");
-            $("#form2").attr("action","${pageContext.request.contextPath}/sys/item/disable");
+            $("#form2").attr("action","${pageContext.request.contextPath}/sys/user/disable");
             document.form2.submit();
         }
         function deleteIds()
         {
             //window.alert("删除");
-            $("#form2").attr("action","${pageContext.request.contextPath}/sys/item/delete");
+            $("#form2").attr("action","${pageContext.request.contextPath}/sys/user/delete");
             document.form2.submit();
         }
         function search()
@@ -39,7 +39,7 @@
     </script>
     <style>
         .disabled{
-            display: none;
+            color: lightgray;
         }
     </style>
 </head>
@@ -183,7 +183,7 @@
     <button type='button' class='button'
             onMouseOver="this.className='button_over';"
             onMouseOut="this.className='button';"
-            onClick="forward('${pageContext.request.contextPath}/sys/item/add.jsp')">
+            onClick="forward('${pageContext.request.contextPath}/sys/user/add')">
         <img
                 src="${pageContext.request.contextPath}/ui/images/button/xinjian.png"
                 border='0' align='absmiddle'>
@@ -326,19 +326,19 @@
 
                 <a style="decoration:none"
                    class="${page.hasNext() ?"":"disabled" }"
-                   href="${pageContext.request.contextPath}/sys/item/list/${page.currentPageNo + 1}"
+                   href="${pageContext.request.contextPath}/sys/user/list/${page.nextPageNo}"
                    style="cursor: hand">下一页</a>
 
                 ${page.currentPageNo}/${page.pageCount}/${page.itemCount}
 
                 <a style="decoration:none"
                    class="${page.hasPrevious() ?"":"disabled" }"
-                   href="${pageContext.request.contextPath}/sys/item/list/${page.currentPageNo - 1}"
+                   href="${pageContext.request.contextPath}/sys/user/list/${page.previousPageNo}"
                    style="cursor: hand">上一页</a>
 
                 <a style="decoration:none"
                    class="${page.hasNext() ?"":"disabled" }"
-                   href="${pageContext.request.contextPath}/sys/item/list/${page.pageCount}"
+                   href="${pageContext.request.contextPath}/sys/user/list/${page.pageCount}"
                    style="cursor: hand">尾页</a>
 
 

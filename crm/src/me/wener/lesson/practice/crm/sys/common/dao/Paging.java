@@ -164,7 +164,7 @@ public class Paging<T>
      */
     public boolean hasPrevious()
     {
-        return currentPageNo >= 0;
+        return currentPageNo > 0;
     }
 
     public List<T> previous()
@@ -202,6 +202,20 @@ public class Paging<T>
         }
     }
 
+    public long getNextPageNo()
+    {
+
+        return hasNext() ? getCurrentPageNo() + 1 : getCurrentPageNo();
+
+    }
+
+    public long getPreviousPageNo()
+    {
+
+        return hasPrevious() ? getCurrentPageNo() - 1 : getCurrentPageNo();
+
+    }
+
     /**
      * 获取项目列表
      * 若 hasNext 或 hasPrevious 为 false 时 会返回 1 或最后一页
@@ -228,7 +242,7 @@ public class Paging<T>
     @Override
     public boolean hasNext()
     {
-        return currentPageNo < getPageCount();
+        return currentPageNo < getPageCount()-1;// 因为 currentPageNo 内部表示为 [0-)
     }
 
     @Override

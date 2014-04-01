@@ -49,7 +49,7 @@
 			<tr>
 				<td colspan="2">
 					<form name="form1" method="post"
-						action="${pageContext.request.contextPath}/GroupAction?action=searchByDepartment">
+						action="${pageContext.request.contextPath}/sys/group/search">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0"
 							name="base" id="base">
 							<tr>
@@ -111,7 +111,7 @@
 		<!-- list -->
 		<div class="border">
 			<form name="form2" method="post"
-				  action="${pageContext.request.contextPath}/GroupAction?action=deleteGroup">
+				  action="${pageContext.request.contextPath}//sys/group/delete">
 				<table width="100%" border="0" cellspacing="0" cellpadding="0"
 					id="PowerTable" class="PowerTable">
 					<!-- title -->
@@ -170,24 +170,24 @@
 
                         <a style="decoration:none"
                            class="${page.hasPrevious() ?"":"disabled" }"
-                           href="${pageContext.request.contextPath}/GroupAction?action=list&pageNo=1"
+                           href="${pageContext.request.contextPath}/sys/group/list/1"
                            style="cursor: hand">首页</a>
 
                         <a style="decoration:none"
                            class="${page.hasNext() ?"":"disabled" }"
-                           href="${pageContext.request.contextPath}/GroupAction?action=list&pageNo=${page.currentPageNo + 1}"
+                           href="${pageContext.request.contextPath}/sys/group/list/${page.currentPageNo + 1}"
                            style="cursor: hand">下一页</a>
 
                         ${page.currentPageNo}/${page.pageCount}/${page.itemCount}
 
                         <a style="decoration:none"
                            class="${page.hasPrevious() ?"":"disabled" }"
-                           href="${pageContext.request.contextPath}/GroupAction?action=list&pageNo=${page.currentPageNo - 1}"
+                           href="${pageContext.request.contextPath}/sys/group/list/${page.currentPageNo - 1}"
                            style="cursor: hand">上一页</a>
 
                         <a style="decoration:none"
                            class="${page.hasNext() ?"":"disabled" }"
-                           href="${pageContext.request.contextPath}/GroupAction?action=list&pageNo=last"
+                           href="${pageContext.request.contextPath}/sys/group/list/${page.pageCount}"
                            style="cursor: hand">尾页</a>
 
 
