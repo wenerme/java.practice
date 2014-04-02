@@ -5,53 +5,43 @@
 <struts>
 
     <!--使用regex进行匹配-->
-    <!--<constant name="struts.enable.SlashesInActionNames" value="true"/>-->
-    <!--<constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>-->
-    <!--<constant name="struts.patternMatcher" value="regex" />-->
-
     <constant name="struts.enable.SlashesInActionNames" value="true"/>
     <constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
     <constant name="struts.patternMatcher" value="regex"/>
 
     <package name="userPackage" extends="struts-default" namespace="/sys/user">
 
-        <!--定义默认方法 -->
-        <default-action-ref name="list"/>
-
-        <!--重定向 /sys/user 操作-->
+        <!--重定向 到默认-->
+        <action name="">
+            <result type="redirectAction">list</result>
+        </action>
         <action name="/">
             <result type="redirectAction">list</result>
         </action>
 
         <!--显示列表-->
-        <action name="list(/{pageNo})?" method="list" class="me.wener.lesson.practice.crm.sys.user.action.UserAction">
+        <action name="list/{pageNo}" method="list" class="me.wener.lesson.practice.crm.sys.user.action.UserAction">
             <result type="dispatcher">/WEB-INF/jsp/sys/user/list.jsp</result>
         </action>
+        <action name="list">
+            <result type="redirectAction">list/</result>
+        </action>
 
-        <!--统一配置-->
-
-        <!--<action name="{action:enable|disable|search}" method="{action}" class="me.wener.lesson.practice.crm.sys.user.action.UserAction">-->
-        <!--<result type="redirectAction">list</result>-->
-        <!--</action>-->
-
-        <action name="enable" method="enable" class="me.wener.lesson.practice.crm.sys.user.action.UserAction">
+        <!-- 三个操作统一 enable|disable|delete -->
+        <action name="{action:enable|disable|delete}" method="{1}"
+                class="me.wener.lesson.practice.crm.sys.user.action.UserAction">
             <result type="redirectAction">list</result>
         </action>
 
-        <action name="disable" method="disable" class="me.wener.lesson.practice.crm.sys.user.action.UserAction">
-            <result type="redirectAction">list</result>
-        </action>
 
-        <!--add 有可能返回 gotoPage,也可能需要 input-->
+        <!--添加操作-->
         <action name="add" method="add" class="me.wener.lesson.practice.crm.sys.user.action.UserAction">
             <result name="input">/WEB-INF/jsp/sys/user/add.jsp</result>
-            <result name="gotoPage">/WEB-INF/jsp/sys/user/add.jsp</result>
-
             <result type="redirectAction">list</result>
         </action>
 
+        <!--搜索操作-->
         <action name="search" method="search" class="me.wener.lesson.practice.crm.sys.user.action.UserAction">
-
             <result type="redirectAction">list</result>
         </action>
 

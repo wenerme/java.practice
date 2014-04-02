@@ -3,21 +3,11 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-    <!--处理/menu-->
-    <!--<package name="adminPkgRoot" extends="struts-default" namespace="/">-->
-    <!--<action name="menu" method="menu" class="me.wener.lesson.practice.crm.sys.admin.action.AdminAction">-->
-    <!--<result name="login" type="redirectAction">-->
-    <!--login-->
-    <!--</result>-->
-    <!--<result>-->
-    <!--/WEB-INF/jsp/menu/index.jsp-->
-    <!--</result>-->
-    <!--</action>-->
-    <!--</package>-->
 
     <package name="adminPkg" extends="struts-default" namespace="/menu">
-        <!--默认为进入菜单界面-->
-        <default-action-ref name="/"/>
+        <action name="">
+            <result type="redirectAction">/</result>
+        </action>
         <action name="/" method="menu" class="me.wener.lesson.practice.crm.sys.admin.action.AdminAction">
             <result name="login" type="redirectAction">
                 login

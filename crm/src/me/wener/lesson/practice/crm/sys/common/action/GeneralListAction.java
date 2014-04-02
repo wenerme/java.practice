@@ -14,7 +14,7 @@ import java.lang.reflect.ParameterizedType;
 public abstract class GeneralListAction<T,C extends ISearchCondition>
         extends ActionSupport
 {
-    public static final String GOTO_PAGE = "gotoPage";
+    public static final String GOTO_PAGE = "input";
     @Getter
     @Setter
     private String id = null;
