@@ -11,17 +11,18 @@
 
     <package name="groupPackage" extends="struts-default" namespace="/sys/group">
 
+        <default-class-ref class="me.wener.lesson.practice.crm.sys.group.action.GroupAction" />
+
         <!-- 重定向到默认显示页面 -->
-        <action name="">
-            <result type="redirectAction">list</result>
-        </action>
         <action name="/">
             <result type="redirectAction">list</result>
         </action>
-
+        <action name="">
+            <result type="redirectAction">/</result>
+        </action>
 
         <!--显示列表-->
-        <action name="list/{pageNo}" method="list" class="me.wener.lesson.practice.crm.sys.group.action.GroupAction">
+        <action name="list/{pageNo}" method="list">
             <result type="dispatcher">/WEB-INF/jsp/sys/group/list.jsp</result>
         </action>
         <action name="list">
@@ -29,14 +30,19 @@
         </action>
 
         <!--添加操作-->
-        <action name="add" method="add" class="me.wener.lesson.practice.crm.sys.group.action.GroupAction">
+        <action name="add" method="add">
             <result name="input">/WEB-INF/jsp/sys/group/add.jsp</result>
             <result type="redirectAction">list</result>
         </action>
 
-        <!--搜索操作-->
-        <action name="search" method="search" class="me.wener.lesson.practice.crm.sys.group.action.GroupAction">
-            <result type="chain">list</result>
+        <!--最终都会直接跳转到 list 页面的操作-->
+        <action name="{action:search}" method="{1}">
+            <result type="redirectAction">list</result>
+        </action>
+
+        <!--重置搜索条件-->
+        <action name="search/reset" method="searchReset">
+            <result type="redirectAction">list</result>
         </action>
 
     </package>

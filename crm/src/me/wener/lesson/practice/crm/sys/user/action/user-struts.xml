@@ -11,40 +11,39 @@
 
     <package name="userPackage" extends="struts-default" namespace="/sys/user">
 
-        <!--重定向 到默认-->
-        <action name="">
-            <result type="redirectAction">list</result>
-        </action>
+        <default-class-ref class="me.wener.lesson.practice.crm.sys.user.action.UserAction"/>
+
+        <!-- 重定向到默认显示页面 -->
         <action name="/">
             <result type="redirectAction">list</result>
         </action>
+        <action name="">
+            <result type="redirectAction">/</result>
+        </action>
 
         <!--显示列表-->
-        <action name="list/{pageNo}" method="list" class="me.wener.lesson.practice.crm.sys.user.action.UserAction">
+        <action name="list/{pageNo}" method="list">
             <result type="dispatcher">/WEB-INF/jsp/sys/user/list.jsp</result>
         </action>
         <action name="list">
             <result type="redirectAction">list/</result>
         </action>
 
-        <!-- 三个操作统一 enable|disable|delete -->
-        <action name="{action:enable|disable|delete}" method="{1}"
-                class="me.wener.lesson.practice.crm.sys.user.action.UserAction">
+        <!--最终都会直接跳转到 list 页面的操作-->
+        <action name="{action:enable|disable|delete|search}" method="{1}">
             <result type="redirectAction">list</result>
         </action>
 
-
         <!--添加操作-->
-        <action name="add" method="add" class="me.wener.lesson.practice.crm.sys.user.action.UserAction">
+        <action name="add" method="add">
             <result name="input">/WEB-INF/jsp/sys/user/add.jsp</result>
             <result type="redirectAction">list</result>
         </action>
 
-        <!--搜索操作-->
-        <action name="search" method="search" class="me.wener.lesson.practice.crm.sys.user.action.UserAction">
+        <!--重置搜索条件-->
+        <action name="search/reset" method="searchReset">
             <result type="redirectAction">list</result>
         </action>
-
     </package>
 
 </struts>

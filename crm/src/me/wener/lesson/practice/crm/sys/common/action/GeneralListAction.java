@@ -118,6 +118,16 @@ public abstract class GeneralListAction<T,C extends ISearchCondition>
         return this.SUCCESS;
     }
 
+    /**
+     * 重置搜索条件
+     */
+    public String searchReset() throws Exception
+    {
+        setCondition(null);
+        setPage(getService().all());
+        return this.SUCCESS;
+    }
+
     @SuppressWarnings("unchecked")// 已判断 object 转换到 page 的正确性
     protected Paging<T> getPage() throws Exception
     {

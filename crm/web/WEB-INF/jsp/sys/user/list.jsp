@@ -126,7 +126,7 @@
                                             border='0' align='absmiddle'>
                                     &nbsp;搜索
                                 </button>
-                                &nbsp;
+                                <a href="${pageContext.request.contextPath}/sys/user/search/reset">重置</a>
                             </div>
                         </td>
                     </tr>
