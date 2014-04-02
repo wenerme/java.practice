@@ -23,5 +23,29 @@ public abstract class GeneralService<T, C extends ISearchCondition> implements I
         return item;
     }
 
+    @Override
+    public T update(T item) throws Exception
+    {
+        getDao().update(item);
+        return item;
+    }
 
+    @Override
+    public boolean exists(int id) throws Exception
+    {
+        getDao().exists(id);
+        return false;
+    }
+
+    @Override
+    public boolean exists(T item) throws Exception
+    {
+        return getDao().exists(item);
+    }
+
+    @Override
+    public T id(int id) throws Exception
+    {
+        return getDao().selectById(id);
+    }
 }

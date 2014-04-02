@@ -35,6 +35,16 @@
             <result type="redirectAction">list</result>
         </action>
 
+        <!--编辑操作-->
+        <action name="edit/{id}" method="edit">
+            <result name="input">/WEB-INF/jsp/sys/group/add.jsp</result>
+            <result type="redirectAction">list</result>
+        </action>
+        <!--没有id的时候也转到 edit/,应该会显示错误信息-->
+        <action name="edit">
+            <result type="redirectAction">edit/</result>
+        </action>
+
         <!--最终都会直接跳转到 list 页面的操作-->
         <action name="{action:search}" method="{1}">
             <result type="redirectAction">list</result>

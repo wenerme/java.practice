@@ -13,5 +13,11 @@ public interface IGeneralService<T,C extends ISearchCondition>
     Paging<T> all() throws Exception;
     void delete(int id) throws Exception;
     T add(T item) throws Exception;
+    T update(T item) throws Exception;
+    boolean exists(int id) throws Exception;
     Paging<T> search(C condition) throws Exception;
+
+    boolean exists(T item) throws Exception;
+
+    T id(int id) throws Exception;
 }

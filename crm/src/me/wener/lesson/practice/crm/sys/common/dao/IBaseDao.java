@@ -15,6 +15,10 @@ public interface IBaseDao<T>
 
     public int update(T t) throws SQLException;
 
+    boolean exists(int id) throws SQLException;
+
+    boolean exists(T item) throws SQLException;
+
     public long count() throws SQLException;
 
     int refresh(T t) throws SQLException;

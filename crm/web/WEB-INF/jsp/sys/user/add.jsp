@@ -31,6 +31,7 @@
 	</head>
 	<body>
 		<form name="form1" method="post" action="${pageContext.request.contextPath}/sys/user/add">
+        <input type="hidden" name="item.id" value="${item.id}">
 			<div class="mtitle">
 				<div class="mtitle-row">
 					&nbsp;
@@ -103,8 +104,8 @@
 										密码*：
 									</td>
 									<td>
-										<input name="item.password" type="password" id="password"
-											style="width: 90%" value="">
+										<input name="item.password" value="${item.password}" type="password" id="password"
+											style="width: 90%">
                                         <s:fielderror fieldName="item.cnname"></s:fielderror>
 									</td>
 									<td>
@@ -127,8 +128,8 @@
 										电子邮件*：
 									</td>
 									<td>
-										<input name="item.email" type="text" class="input" id="email"
-											style="width: 90%" value="">
+										<input name="item.email" value="${item.email}" type="text" class="input" id="email"
+											style="width: 90%">
 									</td>
 								</tr>
 								<tr>
@@ -200,14 +201,14 @@
 										起始有效期*：
 									</td>
 									<td>
-										<input type='text' id='beginDate' name='item.beginDate'
+										<input type='text' id='beginDate' name='item.beginDate' value="${item.beginDate}"
 											class="dateClassStyle" value='' style='width: 90%'>
 									</td>
 									<td class="red">
 										终止有效期*：
 									</td>
 									<td>
-										<input type='text' id='endDate' name='item.endDate'
+										<input type='text' id='endDate' name='item.endDate' value="${item.endDate}"
 											class="dateClassStyle" value='' style='width: 90%'>
 									</td>
 								</tr>
@@ -218,7 +219,7 @@
 										所属部门*：
 									</td>
 									<td>
-										<select id="groupId" name="item.group.id" style='width: 90%'>
+										<select id="groupId" name="item.group.id" value="${item.group.id}" style='width: 90%'>
 											
 												<!-- data -->
 											
@@ -244,10 +245,10 @@
 										状态*：
 									</td>
 									<td>
-										<input type='radio' name='enabled' id='status' value='true'
+										<input type='radio' name='item.enabled' id='status' value='true'
 											class='radio' checked="checked">
 										启用
-										<input type='radio' name='enabled' id='status' value='false'
+										<input type='radio' name='item.enabled' id='status' value='false'
 											class='radio'>
 										停用
 									</td>

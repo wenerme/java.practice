@@ -108,6 +108,18 @@ public class BaseDao<T> implements IBaseDao<T>
     }
 
     @Override
+    public boolean exists(int id) throws SQLException
+    {
+        return dao.idExists(id);
+    }
+    @Override
+    public boolean exists(T item) throws SQLException
+    {
+        return exists(dao.extractId(item));
+    }
+
+
+    @Override
     public long count() throws SQLException
     {
         return dao.countOf();

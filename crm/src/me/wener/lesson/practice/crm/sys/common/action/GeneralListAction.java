@@ -5,39 +5,39 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import lombok.Getter;
 import lombok.Setter;
+import me.wener.lesson.practice.crm.sys.common.dao.IGeneralService;
 import me.wener.lesson.practice.crm.sys.common.dao.ISearchCondition;
 import me.wener.lesson.practice.crm.sys.common.dao.Paging;
-import me.wener.lesson.practice.crm.sys.common.dao.IGeneralService;
+import org.apache.struts2.interceptor.ServletRequestAware;
 
+import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.ParameterizedType;
 
-public abstract class GeneralListAction<T,C extends ISearchCondition>
-        extends ActionSupport
+public abstract class GeneralListAction<T, C extends ISearchCondition>
+        extends ActionSupport implements ServletRequestAware
 {
-    public static final String GOTO_PAGE = "input";
+    @Getter
+    @Setter
+    private HttpServletRequest servletRequest;
     @Getter
     @Setter
     private String id = null;
-
     @Setter
     private String ids[] = null;
-
     @Getter
     @Setter
     private Long pageNo = null;
-
     @Getter
     @Setter
     private T item = null;
-
     @Setter
     private C condition = null;
-
     @Getter
     private Class<T> itemType;
     @Getter
     private Class<C> conditionType;
 
+    @SuppressWarnings("unchecked")// 确保类型的正确
     protected GeneralListAction()
     {
         ParameterizedType su = (ParameterizedType) this.getClass().getGenericSuperclass();
@@ -49,7 +49,7 @@ public abstract class GeneralListAction<T,C extends ISearchCondition>
      * 如果 ids 为null而id不为null,则会返回包含 id 的单元素数组
      * 如果 ids 和 id 同时为 null,则会返回空数组
      */
-    public String[] getIds()
+    protected String[] getIds()
     {
         if (ids == null)
         {
@@ -72,14 +72,11 @@ public abstract class GeneralListAction<T,C extends ISearchCondition>
         else
             getPage();
 
-        return this.SUCCESS;
+        return SUCCESS;
     }
 
     /**
      * 删除操作,接受id或ids,ids优先
-     *
-     * @return
-     * @throws Exception
      */
     public String delete() throws Exception
     {
@@ -88,22 +85,57 @@ public abstract class GeneralListAction<T,C extends ISearchCondition>
         for (String id : getIds())
             service.delete(Integer.parseInt(id));
 
-        return this.SUCCESS;
+        return SUCCESS;
     }
 
     /**
      * 添加操作
-     * @return 如果 item 为 null,会返回 {@link GeneralListAction#GOTO_PAGE}
      */
     public String add() throws Exception
     {
         if (item == null)
-            return GOTO_PAGE;
+            return INPUT;
+        else if (getService().exists(item))// 如果该条目已经存在,则使用 edit
+            return ERROR;// TODO 该项目已经存在
 
         getService().add(item);
-        return this.SUCCESS;
+        return SUCCESS;
     }
 
+
+    /**
+     * 编辑
+     */
+    public String edit() throws Exception
+    {
+        if (item == null || isGet())
+        {
+            T editItem = null;// 编辑对象
+
+            try
+            {
+                editItem = getService().id(Integer.parseInt(id));
+            } catch (NumberFormatException ignored)
+            {
+            }// 有可能 id 错误
+
+            if (editItem == null)
+            {
+                // TODO 错误处理,编辑的项目不存在
+                return ERROR;
+            }
+            // 设置 editItem
+            ActionContext.getContext().put("item", editItem);// 这个不需要放在 Session 里
+
+            return INPUT;
+        }
+
+        if (! getService().exists(item))
+            return  ERROR;// TODO 该条项目不存在
+
+        getService().update(item);
+        return SUCCESS;
+    }
 
     /**
      * 搜索操作
@@ -112,10 +144,10 @@ public abstract class GeneralListAction<T,C extends ISearchCondition>
     {
         if (getCondition() != null)// 只有在有条件时才进行搜索
         {
-            setPage( getService().search( getCondition()));
+            setPage(getService().search(getCondition()));
             ActionContext.getContext().getSession().put("condition", getCondition());
         }
-        return this.SUCCESS;
+        return SUCCESS;
     }
 
     /**
@@ -125,14 +157,14 @@ public abstract class GeneralListAction<T,C extends ISearchCondition>
     {
         setCondition(null);
         setPage(getService().all());
-        return this.SUCCESS;
+        return SUCCESS;
     }
 
     @SuppressWarnings("unchecked")// 已判断 object 转换到 page 的正确性
     protected Paging<T> getPage() throws Exception
     {
         Object o = ActionContext.getContext().getSession().get("page");
-        Paging<T> page = null;
+        Paging<T> page;
         if (o instanceof Paging && ((Paging) o).getType().equals(getItemType()))
         {
             page = (Paging<T>) o;
@@ -148,12 +180,10 @@ public abstract class GeneralListAction<T,C extends ISearchCondition>
     protected void setPage(Paging<T> page) throws Exception
     {
         if (page == null)
-            throw  new NullPointerException("Page must not null.");
+            throw new NullPointerException("Page must not null.");
 
         ActionContext.getContext().getSession().put("page", page);
     }
-
-    protected abstract IGeneralService<T,C> getService();
 
     @SuppressWarnings("unchecked")// 已经确保了类型转换的正确性
     public C getCondition() throws IllegalAccessException, InstantiationException
@@ -169,8 +199,20 @@ public abstract class GeneralListAction<T,C extends ISearchCondition>
         else
             condition = conditionType.newInstance();
 
-        ActionContext.getContext().getSession().put("condition",condition);
+        ActionContext.getContext().getSession().put("condition", condition);
 
         return condition;
     }
+
+    protected boolean isGet()
+    {
+        return servletRequest.getMethod().equals("GET");
+    }
+
+    protected boolean isPost()
+    {
+        return servletRequest.getMethod().equals("POST");
+    }
+
+    protected abstract IGeneralService<T, C> getService();
 }

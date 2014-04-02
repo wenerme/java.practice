@@ -73,8 +73,8 @@ public class UserDao extends BaseDao<User>
             if (!Strings.isNullOrEmpty(condition.getEnname()))
                 where.like(User.FIELD_ENNAME, like(condition.getEnname())).and();
 
-            if (condition.getEnabled() != null)
-                where.like(User.FIELD_ENABLED, condition.getEnabled()).and();
+            if (condition.isEnabled() != null)
+                where.like(User.FIELD_ENABLED, condition.isEnabled()).and();
 
             if (!Strings.isNullOrEmpty(condition.getGroupId()))
                 where.like(User.FIELD_GROUP, condition.getGroupId()).and();
