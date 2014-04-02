@@ -6,6 +6,7 @@
 
     <include file="me/wener/lesson/practice/crm/sys/user/action/user-struts.xml"/>
     <include file="me/wener/lesson/practice/crm/sys/group/action/group-struts.xml"/>
+    <include file="me/wener/lesson/practice/crm/sys/admin/action/admin-struts.xml"/>
 
     <!--<package name="userPackage" extends="struts-default" namespace="/sys/user">-->
 

@@ -9,20 +9,29 @@
     <!--<constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>-->
     <!--<constant name="struts.patternMatcher" value="regex" />-->
 
+    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+    <constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
+    <constant name="struts.patternMatcher" value="regex"/>
+
     <package name="userPackage" extends="struts-default" namespace="/sys/user">
 
         <!--定义默认方法 -->
-        <default-action-ref name="list" />
+        <default-action-ref name="list"/>
+
+        <!--重定向 /sys/user 操作-->
+        <action name="/">
+            <result type="redirectAction">list</result>
+        </action>
 
         <!--显示列表-->
-        <action name="list" method="list" class="me.wener.lesson.practice.crm.sys.user.action.UserAction">
+        <action name="list(/{pageNo})?" method="list" class="me.wener.lesson.practice.crm.sys.user.action.UserAction">
             <result type="dispatcher">/WEB-INF/jsp/sys/user/list.jsp</result>
         </action>
 
         <!--统一配置-->
 
         <!--<action name="{action:enable|disable|search}" method="{action}" class="me.wener.lesson.practice.crm.sys.user.action.UserAction">-->
-            <!--<result type="redirectAction">list</result>-->
+        <!--<result type="redirectAction">list</result>-->
         <!--</action>-->
 
         <action name="enable" method="enable" class="me.wener.lesson.practice.crm.sys.user.action.UserAction">

@@ -18,7 +18,7 @@
 					<br>管理员<font color="red">${admin.username}</font>，欢迎您！现在是：
 					<fmt:formatDate value="<%=new Date() %>" pattern="yyyy 年 MM 月 dd 日 E HH:mm:ss" />
 					| <a
-						href="${pageContext.request.contextPath}/AdminAction?action=logout"
+						href="${pageContext.request.contextPath}/menu/logout"
 						target="_parent">退出 
 						</a>
 				</div>

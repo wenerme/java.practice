@@ -1,4 +1,5 @@
-﻿<%@ page language="java" pageEncoding="UTF-8"%>
+﻿<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -30,7 +31,7 @@
 				margin: 0px;
 			}
 	</style>
-	<script type="text/javascript" src="js/jquery-1.8.2.js"></script>
+	<script type="text/javascript" src="../../../js/jquery-1.8.2.js"></script>
 	<script type="text/javascript">
 		function changeCheckNum(){
 			//局部刷新
@@ -79,7 +80,7 @@
 	</head>
 		<BODY topmargin="0" leftmargin="0">
 		<form name="form1" method="post"
-			action="${pageContext.request.contextPath}/AdminAction?action=login">
+			action="${pageContext.request.contextPath}/menu/login">
 			<TABLE width="100%" cellpadding="0" cellspacing="0" id="header">
 				<TR>
 					<TD>
@@ -148,7 +149,7 @@
 															验&nbsp;证&nbsp;码：
 														</TD>
 														<TD class="td">
-															<input name="checkNum" type="text" value="" id="checkNum"
+															<input name="verifyCode" type="text" value="" id="checkNum"
 																style="width: 80">
 															<img id="checkNumImage"
 																src="${pageContext.request.contextPath}/image.jsp"
@@ -168,7 +169,9 @@
 												<img
 													src="${pageContext.request.contextPath}/ui/images/reset.png"
 													id="reset" onClick="" style="cursor: hand">
+                                                <s:fielderror></s:fielderror>
 											</TD>
+
 										</TR>
 									</TABLE>
 								</TD>

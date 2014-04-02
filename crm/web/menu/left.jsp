@@ -46,14 +46,14 @@
 								<img
 									src="${pageContext.request.contextPath}/ui/images/menu/bmsz.png"
 									width="17" height="17">
-								<a href="${pageContext.request.contextPath}/GroupAction?action=list"
+								<a href="${pageContext.request.contextPath}/sys/group/list"
 									target="rightFrame">部门设置</a>
 							</li>
 							<li>
 								<img
 									src="${pageContext.request.contextPath}/ui/images/menu/rsgl.png"
 									width="17" height="17">
-								<a href="${pageContext.request.contextPath}/UserAction?action=list"
+								<a href="${pageContext.request.contextPath}/sys/user/list"
 									target="rightFrame">人事管理</a>
 							</li>
 						</ul>
