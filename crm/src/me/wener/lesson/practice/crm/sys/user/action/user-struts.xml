@@ -13,6 +13,15 @@
 
         <default-class-ref class="me.wener.lesson.practice.crm.sys.user.action.UserAction"/>
 
+        <global-results>
+            <result type="dispatcher" name="list">/WEB-INF/jsp/sys/user/list.jsp</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.sql.SQLException" result="sqlException" />
+            <exception-mapping exception="java.lang.Exception" result="exception"/>
+        </global-exception-mappings>
+
         <!-- 重定向到默认显示页面 -->
         <action name="/">
             <result type="redirectAction">list</result>

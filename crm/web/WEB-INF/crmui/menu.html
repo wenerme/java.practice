@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh" class="page-menu">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -43,7 +43,7 @@
 			option.north.size = 50;
 			option.west.size = 250;
 			$('body').layout(option);
-			$('#center').layout(option);
+			$('body > .ui-layout-center').layout(option);
 		});
 
 
@@ -52,207 +52,10 @@
 <body class="metro">
 <!--main banner-->
 
-<!--Center-->
-<div class="ui-layout-center no-padding" id="center">
+<div class="ui-layout-center no-padding">
 
-<div class="ui-layout-center">
-
-	<div class="grid fluid">
-		<form>
-			<fieldset>
-				<legend><i class="icon-search"></i> 搜索 <input class="primary" type="submit" value="搜索">
-					<input type="reset" value="重置">
-				</legend>
-				<div class="input-control text span4" data-role="input-control">
-					<input type="text" placeholder="中文名">
-					<button class="btn-clear" tabindex="-1"></button>
-				</div>
-
-				<div class="input-control text span4" data-role="input-control">
-					<input type="text" placeholder="英文名">
-					<button class="btn-clear" tabindex="-1"></button>
-				</div>
-
-				<div class="input-control select span4" data-role="input-control">
-					<select>
-						<option>部门选择</option>
-						<option>财务部</option>
-						<option>人事部</option>
-					</select>
-				</div>
-
-				<div class="input-control radio span3" data-role="input-control">
-					<label class="inline-block">
-						<input type="radio" name="r1" checked/>
-						<span class="check"></span>
-						启用
-					</label>
-					<label class="inline-block">
-						<input type="radio" name="r1"/>
-						<span class="check"></span>
-						禁用
-					</label>
-					<label class="inline-block">
-						<input type="radio" name="r1"/>
-						<span class="check"></span>
-						全部
-					</label>
-				</div>
-			</fieldset>
-		</form>
-
-		<div>
-			<legend><i class="icon-user"></i> 人员列表
-				<button class="primary"><i class="icon-new"></i> 新建</button>
-				<button class="success"><i class="fa fa-check-circle"></i> 启用</button>
-				<button class="warning"><i class="fa fa-minus-circle"></i> 停用</button>
-				<button class="danger"><i class="fa fa-plus-circle"></i> 删除</button>
-				<button class="default"><i class="fa fa-refresh"></i> 刷新</button>
-			</legend>
-			<div>
-				<table class="table striped bordered hovered general-table">
-					<thead>
-
-					<tr>
-						<th class="text-center">
-							<label class="input-control inline-block checkbox">
-								<input type="checkbox"/>
-								<span class="check"></span>
-							</label>
-						</th>
-						<th class="text-left">用户名</th>
-						<th class="text-left">中文名</th>
-						<th class="text-left">电子邮件</th>
-						<th class="text-left">所属部门</th>
-						<th class="text-center">起始有效期</th>
-						<th class="text-center">终止有效期</th>
-						<th class="text-center">状态</th>
-						<th class="text-left">操作</th>
-					</tr>
-					</thead>
-
-					<tbody>
-					<tr class="">
-						<td class="text-center">
-							<label class="input-control inline-block checkbox">
-								<input type="checkbox"/>
-								<span class="check"></span>
-							</label>
-						</td>
-						<td>wener</td>
-						<td>文儿</td>
-						<td>wener.me@qq.com</td>
-						<td>学习部</td>
-						<td>2014-1-2</td>
-						<td>2014-2-2</td>
-						<td class="text-center">
-							<label class="input-control switch">
-								<input type="checkbox" checked/>
-								<span class="check"></span>
-							</label>
-						</td>
-						<td class="right">
-							编辑
-						</td>
-					</tr>
-					<tr class="">
-						<td class="text-center">
-							<label class="input-control inline-block checkbox">
-								<input type="checkbox"/>
-								<span class="check"></span>
-							</label>
-						</td>
-						<td>wener</td>
-						<td>文儿</td>
-						<td>wener.me@qq.com</td>
-						<td>学习部</td>
-						<td>2014-1-2</td>
-						<td>2014-2-2</td>
-						<td class="text-center">
-							<label class="input-control switch">
-								<input type="checkbox" checked/>
-								<span class="check"></span>
-							</label>
-						</td>
-						<td class="right">编辑</td>
-
-					</tbody>
-				</table>
-
-			</div>
-		</div>
-		<!--/人员列表-->
-	</div>
-	<!--/list-->
-
-	<div>
-		<form>
-			<fieldset>
-				<div class="grid fluid padding20">
-					<legend class="row">
-						<i class="icon-user"></i> 添加人员
-						<input class="primary" type="submit" value="搜索">
-						<input type="reset" value="重置">
-					</legend>
-
-					<div class="row">
-						<div class="input-control text span4" data-role="input-control">
-							<input type="text" placeholder="中文名">
-							<button class="btn-clear" tabindex="-1"></button>
-						</div>
-
-						<div class="input-control text span3" data-role="input-control">
-							<input type="text" placeholder="英文名">
-							<button class="btn-clear" tabindex="-1"></button>
-						</div>
-
-						<div class="input-control select span3" data-role="input-control">
-							<select>
-								<option>部门选择</option>
-								<option>财务部</option>
-								<option>人事部</option>
-							</select>
-						</div>
-
-					</div>
-
-					<div class="row">
-						<!--状态选择-->
-						<div class="input-control radio span3 no-padding text-center" data-role="input-control">
-							<label class="inline-block">
-								<input type="radio" name="r1" checked/>
-								<span class="check"></span>
-								启用
-							</label>
-							<label class="inline-block">
-								<input type="radio" name="r1"/>
-								<span class="check"></span>
-								禁用
-							</label>
-						</div>
-
-						<!--日期选择-->
-						<div class="span3 offset1">
-							<div class="input-control text" data-role="datepicker" data-effect="slide">
-								<input type="text" placeholder="开始日期">
-								<button class="btn-date"></button>
-							</div>
-						</div>
-						<div class="span3">
-							<div class="input-control text" data-role="datepicker" data-effect="slide">
-								<input type="text" placeholder="结束日期">
-								<button class="btn-date"></button>
-							</div>
-						</div>
-
-					</div>
-					<!--/row-->
-				</div>
-				<!--/grid-->
-			</fieldset>
-		</form>
-	</div>
-	<!--/add-->
+<!--center-->
+<div id="center-part" class="ui-layout-center">
 
 </div>
 <!--/end center-->
@@ -261,57 +64,40 @@
 <!--<iframe class="ui-layout-center" src="sys/user/list.html" frameborder="0" scrolling="auto"></iframe>-->
 
 <!--north-->
-<div class="ui-layout-north">
-	<div class="pull-right">
-		<div class="times inverse inline-block pull-right" data-role="times" data-blink="false"></div>
+<div id="north-part" class="ui-layout-north">
+	<div class="times inverse inline-block pull-right" data-role="times" data-blink="false"></div>
 
-		<div class="inline-block pull-right">
-			管理员 xxx 你好
-			<button class="">退出登录</button>
-		</div>
+	<div class="inline-block">
+		管理员 xxx 你好
+		<button class="">退出登录</button>
 	</div>
+
+		<button><i class="icon-arrow-left page-nav-backward"></i></button>
+		<button><i class="icon-arrow-right page-nav-forward"></i></button>
+		<button><i class="fa fa-refresh page-nav-refresh"></i></button>
 </div>
 <!--/north-->
 </div>
 <!--/Center-->
 
 <!--west-->
-<div class="ui-layout-west no-padding">
+<div id="west-part" class="ui-layout-west no-padding">
 	<nav class="sidebar dark">
 		<ul>
 			<li class="title">客户关系管理</li>
-			<li class="active"><a href="#"><i class="icon-home"></i>主面板</a></li>
+			<li class="active"><a href="dashbboard" class="page-url"><i class="icon-home"></i>主面板</a></li>
 			<li class="stick bg-yellow">
 				<a class="dropdown-toggle" href="#"><i class="icon-tree-view"></i>日常管理</a>
-				<ul class="dropdown-menu" data-role="dropdown">
-					<li><a href="">人事管理</a></li>
-					<li><a href="">部门管理</a></li>
+				<ul class="dropdown-menu keep-open" data-role="dropdown">
+					<li><a href="sys/user/list" class="page-url"><i class="fa fa-user"></i>人事管理</a></li>
+					<li><a href="sys/group/list" class="page-url" ><i class="fa fa-users"></i>部门管理</a></li>
 					<li class="divider"></li>
 					<li><a href="">其他管理</a></li>
-					<li class="disabled"><a href="">Subitem 4</a></li>
 				</ul>
 			</li>
-			<li class=""><a href="#"><i class="fa fa-question-circle"></i>常见问题</a></li>
-
-			<li class=""><a href="#">Thread item</a></li>
-			<li class="disabled"><a href="#">Disabled item</a></li>
-
-			<li class="title">Items Group 2</li>
-			<li><a href="#">Other Item 1</a></li>
-			<li><a href="#">Other item 2</a></li>
-			<li><a href="#">Other item 3</a></li>
-			<li>
-				<a class="dropdown-toggle" href="#">Sub menu 2</a>
-				<ul class="dropdown-menu" data-role="dropdown">
-					<li><a href="">Subitem 1</a></li>
-					<li><a href="">Subitem 2</a></li>
-					<li><a href="">Subitem 3</a></li>
-				</ul>
-			</li>
+			<li><a href="faq" class="page-url"><i class="fa fa-question-circle"></i>常见问题</a></li>
 		</ul>
 	</nav>
-
-
 </div>
 <!--/west-->
 

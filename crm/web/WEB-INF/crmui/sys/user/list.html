@@ -1,36 +1,138 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-	<meta charset="UTF-8">
 
-	<!--<link href="assets/metro/css/metro-bootstrap.css" rel="stylesheet">-->
-	<!--<link href="assets/metro/css/metro-bootstrap-responsive.css" rel="stylesheet">-->
+<!--user-list-->
+<div>
+	<form>
+		<fieldset>
+			<div class="grid fluid padding20">
+				<legend><i class="icon-search"></i> 搜索人员
+					<button class="primary" type="submit"> <i class="icon-search"></i> 搜索</button>
+					<button type="reset">重置</button>
+				</legend>
 
-	<!--&lt;!&ndash;<link href="assets/bootstrap/css/bootstrap-combined.min.css" rel="stylesheet">&ndash;&gt;-->
-	<!--<link href="assets/bootstrap/css/metro-bootstrap.css" rel="stylesheet">-->
+				<div class="row">
+					<div class="input-control text span4" data-role="input-control">
+						<input type="text" placeholder="中文名">
+						<button class="btn-clear" tabindex="-1"></button>
+					</div>
 
-	<!--<link href="assets/js/jquery/layout-default-latest.css" rel="stylesheet">-->
+					<div class="input-control text span4" data-role="input-control">
+						<input type="text" placeholder="英文名">
+						<button class="btn-clear" tabindex="-1"></button>
+					</div>
 
-	<!--<link href="assets/iconFont.css" rel="stylesheet">-->
-	<!--<link href="assets/font-awesome.min.css" rel="stylesheet">-->
+					<div class="input-control select span4" data-role="input-control">
+						<select>
+							<option>部门选择</option>
+							<option>财务部</option>
+							<option>人事部</option>
+						</select>
+					</div>
+				</div>
 
-	<!--<link href="style/main.less" rel="stylesheet/less">-->
+				<div class="input-control radio span3" data-role="input-control">
+					<label class="inline-block">
+						<input type="radio" name="r1" checked/>
+						<span class="check"></span>
+						启用
+					</label>
+					<label class="inline-block">
+						<input type="radio" name="r1"/>
+						<span class="check"></span>
+						禁用
+					</label>
+					<label class="inline-block">
+						<input type="radio" name="r1"/>
+						<span class="check"></span>
+						全部
+					</label>
+				</div>
+			</div>
 
-	<!--&lt;!&ndash; Load JavaScript Libraries &ndash;&gt;-->
-	<!--<script src="assets/js/jquery/jquery.min.js"></script>-->
-	<!--<script src="assets/js/jquery/jquery.ui.js"></script>-->
-	<!--<script src="assets/js/jquery/jquery.widget.min.js"></script>-->
-	<!--<script src="assets/js/jquery/jquery.mousewheel.js"></script>-->
-	<!--<script src="assets/js/jquery/jquery.layout-latest.js"></script>-->
-	<!--<script src="assets/metro/js/metro.min.js"></script>-->
-	<!--<script src="assets/bootstrap/js/bootstrap.min.js"></script>-->
+		</fieldset>
 
-	<!--<script src="assets/js/less.min.js"></script>-->
+	</form>
+	<!--/搜索-->
+	<!--人员列表-->
+	<div class="grid fluid padding20">
+		<legend><i class="icon-user"></i> 人员列表
+			<button class="primary" data-page-url="sys/user/add"><i class="icon-new"></i> 新建</button>
+			<button class="success"><i class="fa fa-check-circle"></i> 启用</button>
+			<button class="warning"><i class="fa fa-minus-circle"></i> 停用</button>
+			<button class="danger"><i class="fa fa-plus-circle"></i> 删除</button>
+			<button class="default"><i class="fa fa-refresh"></i> 刷新</button>
+		</legend>
+		<div>
+			<table class="table striped bordered hovered general-table">
+				<thead>
 
-	<title></title>
-</head>
-<body>
-search
-list
-</body>
-</html>
+				<tr>
+					<th class="text-center span1">
+						<label class="input-control inline-block checkbox">
+							<input type="checkbox"/>
+							<span class="check"></span>
+						</label>
+					</th>
+					<th class="text-left">用户名</th>
+					<th class="text-left">中文名</th>
+					<th class="text-left">电子邮件</th>
+					<th class="text-left">所属部门</th>
+					<th class="text-center">起始有效期</th>
+					<th class="text-center">终止有效期</th>
+					<th class="text-center">状态</th>
+					<th class="text-center">操作</th>
+				</tr>
+				</thead>
+
+				<tbody>
+				<tr class="">
+					<td class="text-center">
+						<label class="input-control inline-block checkbox">
+							<input type="checkbox"/>
+							<span class="check"></span>
+						</label>
+					</td>
+					<td>wener</td>
+					<td>文儿</td>
+					<td>wener.me@qq.com</td>
+					<td>学习部</td>
+					<td>2014-1-2</td>
+					<td>2014-2-2</td>
+					<td class="text-center">
+						<label class="input-control switch">
+							<input type="checkbox" checked/>
+							<span class="check"></span>
+						</label>
+					</td>
+					<td class="text-center">
+						编辑
+					</td>
+				</tr>
+				<tr class="">
+					<td class="text-center">
+						<label class="input-control inline-block checkbox">
+							<input type="checkbox"/>
+							<span class="check"></span>
+						</label>
+					</td>
+					<td>wener</td>
+					<td>文儿</td>
+					<td>wener.me@qq.com</td>
+					<td>学习部</td>
+					<td>2014-1-2</td>
+					<td>2014-2-2</td>
+					<td class="text-center">
+						<label class="input-control switch">
+							<input type="checkbox" checked/>
+							<span class="check"></span>
+						</label>
+					</td>
+					<td class="text-center">编辑</td>
+
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+	<!--/人员列表-->
+</div>
+<!--/user-list-->

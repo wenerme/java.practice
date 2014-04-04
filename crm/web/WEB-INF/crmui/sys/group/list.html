@@ -1,0 +1,93 @@
+
+<!--user-list-->
+<div>
+	<form>
+		<fieldset>
+			<div class="grid fluid padding20">
+				<legend><i class="icon-search"></i> 部门搜索
+					<button class="primary" type="submit"> <i class="icon-search"></i> 搜索</button>
+					<button type="reset">重置</button>
+				</legend>
+
+				<div class="row">
+					<div class="input-control text span4" data-role="input-control">
+						<input type="text" placeholder="部门名称">
+						<button class="btn-clear" tabindex="-1"></button>
+					</div>
+
+					<div class="input-control text span4" data-role="input-control">
+						<input type="text" placeholder="部门负责人">
+						<button class="btn-clear" tabindex="-1"></button>
+					</div>
+
+				</div>
+
+			</div>
+
+		</fieldset>
+
+	</form>
+	<!--/搜索-->
+	<!--列表-->
+	<div class="grid fluid padding20">
+		<legend><i class="icon-user"></i> 部门列表
+			<button class="primary" data-page-url="sys/group/add"><i class="icon-new"></i> 新建</button>
+			<!--<button class="success"><i class="fa fa-check-circle"></i> 启用</button>-->
+			<!--<button class="warning"><i class="fa fa-minus-circle"></i> 停用</button>-->
+			<button class="danger"><i class="fa fa-plus-circle"></i> 删除</button>
+			<button class="default"><i class="fa fa-refresh"></i> 刷新</button>
+		</legend>
+		<div>
+			<table class="table striped bordered hovered general-table">
+				<thead>
+
+				<tr>
+					<th class="text-center span1">
+						<label class="input-control inline-block checkbox">
+							<input type="checkbox"/>
+							<span class="check"></span>
+						</label>
+					</th>
+					<th class="text-left">部门名称</th>
+					<th class="text-left">部门负责人</th>
+					<th class="text-left">部门职能</th>
+					<!--<th class="text-left">所属部门</th>-->
+					<!--<th class="text-center">起始有效期</th>-->
+					<!--<th class="text-center">终止有效期</th>-->
+					<!--<th class="text-center">状态</th>-->
+					<th class="text-center span1">操作</th>
+				</tr>
+				</thead>
+
+				<tbody>
+				<tr class="">
+					<td class="text-center">
+						<label class="input-control inline-block checkbox">
+							<input type="checkbox"/>
+							<span class="check"></span>
+						</label>
+					</td>
+					<td>市场部</td>
+					<td>文儿</td>
+					<td>市场调查</td>
+					<td class="text-center">编辑</td>
+				</tr>
+				<tr class="">
+					<td class="text-center">
+						<label class="input-control inline-block checkbox">
+							<input type="checkbox"/>
+							<span class="check"></span>
+						</label>
+					</td>
+					<td>调研部</td>
+					<td>文儿</td>
+					<td>实际调研</td>
+					<td class="text-center">编辑</td>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+	<!--/列表-->
+</div>
+<!--/user-list-->
