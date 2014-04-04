@@ -193,6 +193,11 @@ $(function()
 	{
 		doPageUrl(e.target);
 	});
+	// 正常的折叠操作
+	$sidebar.find('.dropdown-toggle').on('click',function()
+	{
+		$(this).siblings('.dropdown-menu').toggleClass('keep-open');
+	});
 	// 刷新导航按钮状态
 	refreshNavButtonState();
 });

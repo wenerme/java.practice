@@ -23,21 +23,16 @@
 	<script src="assets/js/jquery/jquery.widget.min.js"></script>
 	<script src="assets/js/jquery/jquery.mousewheel.js"></script>
 	<script src="assets/js/jquery/jquery.layout-latest.js"></script>
-	<script src="assets/metro/js/metro.min.js"></script>
-	<!--<script src="assets/bootstrap/js/bootstrap.min.js"></script>-->
-
-	<!--metro plugins-->
-	<!--<script src="assets/metro/js/metro-dropdown.js"></script>-->
-	<!--<script src="assets/metro/js/metro-input-control.js"></script>-->
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 
 	<script src="assets/js/less.min.js"></script>
-
 
 	<script src="js/main.js"></script>
 
 	<title>客户关系管理系统</title>
 	<script>
-		$(document).ready(function ()
+		window.METRO_AUTO_REINIT = true;
+		$(function ()
 		{
 			var option = {north: {}, west: {}};
 			option.north.spacing_open = 0;
@@ -46,8 +41,6 @@
 			$('body').layout(option);
 			$('body > .ui-layout-center').layout(option);
 		});
-
-
 	</script>
 </head>
 <body class="metro">
@@ -99,6 +92,8 @@
 </div>
 <!--/west-->
 
+
+<script src="assets/metro/js/metro.min.js"></script>
 
 </body>
 </html>

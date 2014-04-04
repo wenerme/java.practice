@@ -1,6 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
     <title>人事管理</title>
@@ -91,29 +92,7 @@
                             所属部门：
                         </td>
                         <td width="12%" nowrap="nowrap">
-                            <select id="groupId" name="condition.groupId" style="width: 90%">
-
-                                <option value=''>
-                                    --------------
-                                </option>
-
-                                <!-- data -->
-
-                                <option value="1" ${condition.groupId == "1"?"selected":""}>
-                                    财务部
-                                </option>
-
-                                <option value="2" ${condition.groupId == "2"?"selected":""}>
-                                    开发部
-                                </option>
-
-                                <option value="3" ${condition.groupId == "3"?"selected":""}>
-                                    公关部
-                                </option>
-
-                                <!-- data -->
-
-                            </select>
+                            <s:select name="condition.groupId" list="#{'':'--选择部门--', '1':'财务部', '2':'财务部','3':'公关部'}" />
                         </td>
                         <td width="25%" align="center">
                             <div class="control">
@@ -135,19 +114,10 @@
                             状态：
                         </td>
                         <td width="20%">
-                            <input type='radio' name="condition.enabled" id='enable' value='true'
-                                   class='radio'
-                                   ${condition.enabled?"checked":""}><label for="enable">启用</label>
-                            <input type='radio' name="condition.enabled" id='disable' value='false'
-                                   class='radio'
-                                    ${condition.enabled == false?"checked":""}>
-                            <label for="disable">停用</label>
-                            <input type='radio'
-                                   name="condition.enabled" id='all_state' value=''
-                                   class='radio'
-                                    ${condition.enabled == null?"checked":""}>
 
-                            <label for="all_state">全部</label>
+                            <s:radio name="condition.enabled"
+                                     value="condition.enabled"
+                                     list="#{'true':'启用', 'false':'停用', '':'全部'}" />
 
                         </td>
                         <td>
