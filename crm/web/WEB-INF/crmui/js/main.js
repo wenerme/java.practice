@@ -84,7 +84,7 @@ $(function()
 	var extension = '.html';// 便于测试
 	var history = new History();
 
-	function load_page(url)
+	function loadPage(url)
 	{
 		// 判断是否已经有后缀
 		if(extension)
@@ -93,13 +93,28 @@ $(function()
 			url = url + extension;
 		}
 
-		console.info("load page ", url)
+		console.info("load page ", url);
 		$('#center-part').load(url);
 		history.add(url);
+		// 刷新导航按钮状态
+		refreshNavButtonState();
+//		console.log(history);
 	}
-	function refresh_nav_button_state()
+	function refreshNavButtonState()
 	{
+		var $set = $('[data-page-nav],[class*=page-nav]');
+		var $forward = $set.filter('[data-page-nav=forward],[class*=page-nav-forward]');
+		var $backward = $set.filter('[data-page-nav=backward],[class*=page-nav-backward]');
 
+		if(history.canBackward())
+			$backward.removeClass('disabled');
+		else
+			$backward.addClass('disabled');
+
+		if(history.canForward())
+			$forward.removeClass('disabled');
+		else
+			$forward.addClass('disabled');
 	}
 	function doPageUrl(target)
 	{
@@ -112,7 +127,7 @@ $(function()
 		if(! url)
 			url = $this.data('page-url');
 
-		load_page(url);
+		loadPage(url);
 
 		// 如果是在左侧的菜单栏选择的,则设置 active
 		var $sidebar = $this.closest('.sidebar');
@@ -133,9 +148,10 @@ $(function()
 	});
 
 	// 页面导航跳转
-	$(document).on('click','[data-page-nav],[class*=page-nav]',function(e)
+	$(document).on('click', '[data-page-nav],[class*=page-nav]', function ()
 	{
-		var $this = $(e.target);
+
+		var $this = $(this);
 		var action = $this.data('page-nav');
 		if(!action)
 		{
@@ -161,7 +177,7 @@ $(function()
 				return;
 		}
 		if(!! url)
-			load_page(url);
+			loadPage(url);
 	});
 
 	// 显示当前激活的页面
@@ -177,8 +193,19 @@ $(function()
 	{
 		doPageUrl(e.target);
 	});
+	// 刷新导航按钮状态
+	refreshNavButtonState();
 });
 
+// 清除按钮操作实现
+$(function()
+{
+//	$(document).on('click','.btn-clear',function(e)
+//	{
+//		e.preventDefault();
+//
+//	});
+});
 
 // tree 操作实现
 $(function ()

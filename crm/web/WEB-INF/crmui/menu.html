@@ -24,10 +24,11 @@
 	<script src="assets/js/jquery/jquery.mousewheel.js"></script>
 	<script src="assets/js/jquery/jquery.layout-latest.js"></script>
 	<script src="assets/metro/js/metro.min.js"></script>
-	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<!--<script src="assets/bootstrap/js/bootstrap.min.js"></script>-->
 
 	<!--metro plugins-->
-	<script src="assets/metro/js/metro-dropdown.js"></script>
+	<!--<script src="assets/metro/js/metro-dropdown.js"></script>-->
+	<!--<script src="assets/metro/js/metro-input-control.js"></script>-->
 
 	<script src="assets/js/less.min.js"></script>
 
@@ -54,29 +55,26 @@
 
 <div class="ui-layout-center no-padding">
 
-<!--center-->
-<div id="center-part" class="ui-layout-center">
+	<!--center-->
+	<div id="center-part" class="ui-layout-center">
 
-</div>
-<!--/end center-->
-
-<!--开发完成后再使用框架来显示-->
-<!--<iframe class="ui-layout-center" src="sys/user/list.html" frameborder="0" scrolling="auto"></iframe>-->
-
-<!--north-->
-<div id="north-part" class="ui-layout-north">
-	<div class="times inverse inline-block pull-right" data-role="times" data-blink="false"></div>
-
-	<div class="inline-block">
-		管理员 xxx 你好
-		<button class="">退出登录</button>
 	</div>
+	<!--/end center-->
 
-		<button><i class="icon-arrow-left page-nav-backward"></i></button>
-		<button><i class="icon-arrow-right page-nav-forward"></i></button>
-		<button><i class="fa fa-refresh page-nav-refresh"></i></button>
-</div>
-<!--/north-->
+	<!--north-->
+	<div id="north-part" class="ui-layout-north">
+		<div class="times inverse inline-block pull-right" data-role="times" data-blink="false"></div>
+
+		<div class="inline-block">
+			管理员 xxx 你好
+			<button class="">退出登录</button>
+		</div>
+
+		<button class="page-nav-backward"><i class="icon-arrow-left"></i></button>
+		<button class="page-nav-forward"><i class="icon-arrow-right"></i></button>
+		<button class="page-nav-refresh"><i class="fa fa-refresh"></i></button>
+	</div>
+	<!--/north-->
 </div>
 <!--/Center-->
 
@@ -90,9 +88,9 @@
 				<a class="dropdown-toggle" href="#"><i class="icon-tree-view"></i>日常管理</a>
 				<ul class="dropdown-menu" data-role="dropdown">
 					<li><a href="sys/user/list" class="page-url"><i class="fa fa-user"></i>人事管理</a></li>
-					<li><a href="sys/group/list" class="page-url" ><i class="fa fa-users"></i>部门管理</a></li>
+					<li><a href="sys/group/list" class="page-url"><i class="fa fa-users"></i>部门管理</a></li>
 					<li class="divider"></li>
-					<li><a href="">其他管理</a></li>
+					<li><a href="#">其他管理</a></li>
 				</ul>
 			</li>
 			<li><a href="faq" class="page-url"><i class="fa fa-question-circle"></i>常见问题</a></li>
