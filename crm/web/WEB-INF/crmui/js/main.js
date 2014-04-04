@@ -101,14 +101,9 @@ $(function()
 	{
 
 	}
-
-	// 点击跳转到 url
-	$(document).on('click','[data-page-url],a.page-url',function(e)
+	function doPageUrl(target)
 	{
-		e.preventDefault();
-		e.stopPropagation();
-
-		var $this = $(this);
+		var $this = $(target);
 		var url;
 
 		if($this.is('a.page-url'))
@@ -126,12 +121,21 @@ $(function()
 			$sidebar.find('.active').removeClass('active');
 			$this.closest('li').addClass('active');
 		}
+	}
+
+	// 点击跳转到 url
+	$(document).on('click','[data-page-url],a.page-url',function(e)
+	{
+		e.preventDefault();
+		e.stopPropagation();
+
+		doPageUrl(e.target);
 	});
 
 	// 页面导航跳转
 	$(document).on('click','[data-page-nav],[class*=page-nav]',function(e)
 	{
-		var $this = $(this);
+		var $this = $(e.target);
 		var action = $this.data('page-nav');
 		if(!action)
 		{
@@ -161,7 +165,18 @@ $(function()
 	});
 
 	// 显示当前激活的页面
-	$('.sidebar .active a.page-url').trigger('click');
+	$sidebar = $('.sidebar ');
+	$sidebar.find('.active a.page-url').trigger('click');
+
+	// 避免每次都被关闭
+	$sidebar.find('.dropdown-menu').on('click',function(e)
+	{
+		e.preventDefault();
+		e.stopPropagation();
+	}).on('click','[data-page-url],a.page-url',function(e)
+	{
+		doPageUrl(e.target);
+	});
 });
 
 

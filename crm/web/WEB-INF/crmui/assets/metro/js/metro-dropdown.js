@@ -27,6 +27,7 @@
                     that._close(menu);
                 } else {
                     $('.dropdown-menu').each(function(i, el){
+
                         if (!menu.parents('.dropdown-menu').is(el) && !$(el).hasClass('keep-open') && $(el).css('display')=='block') {
                             that._close(el);
                         }
