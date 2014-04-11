@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+    <constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
+    <constant name="struts.patternMatcher" value="regex"/>
+
+    <package name="adminPkg" extends="struts-default" namespace="/menu">
+
+        <!--<default-action-ref name="tryUrl"/>-->
+        <!--<action name="tryUrl" class="me.wener.lesson.practice.crm.sys.common.action.TryUrlAction">-->
+            <!--<param name="path">/WEB-INF/ui/menu</param>-->
+            <!--<param name="path">/menu</param>-->
+            <!--<param name="level">2</param>-->
+
+            <!--<result name="error" type="httpheader">404</result>-->
+            <!--<result type="redirect">${url}</result>-->
+        <!--</action>-->
+
+        <action name="">
+            <result type="redirectAction">/</result>
+        </action>
+        <action name="/" method="menu" class="me.wener.lesson.practice.crm.sys.admin.action.AdminAction">
+            <result name="login" type="redirectAction">
+                login
+            </result>
+            <result>
+                /WEB-INF/ui/menu/index.jsp
+            </result>
+        </action>
+
+        <!--登录操作-->
+        <action name="login" method="login" class="me.wener.lesson.practice.crm.sys.admin.action.AdminAction">
+            <result type="redirectAction">
+                /
+            </result>
+            <result name="input">
+                /WEB-INF/ui/menu/login.jsp
+            </result>
+        </action>
+
+        <!--登出操作-->
+        <action name="logout" method="logout" class="me.wener.lesson.practice.crm.sys.admin.action.AdminAction">
+            <result type="redirectAction">
+                login
+            </result>
+        </action>
+    </package>
+</struts>
