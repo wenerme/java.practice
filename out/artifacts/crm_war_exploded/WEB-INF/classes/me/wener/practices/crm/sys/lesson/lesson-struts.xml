@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <!--使用regex进行匹配-->
+    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+    <constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
+    <constant name="struts.patternMatcher" value="regex"/>
+
+    <package name="lesson-pkg" extends="struts-default" namespace="/admin/lesson">
+        <default-class-ref class="me.wener.practices.crm.sys.lesson.LessonAction"/>
+        <!--基本的列表管理功能-->
+        <action name="list" method="list">
+            <result>/WEB-INF/jsp/lesson/list.jsp</result>
+        </action>
+
+        <action name="{action:edit|add|delete|search}" method="{1}">
+            <result name="toList" type="redirectAction">list</result>
+            <result name="edit">/WEB-INF/jsp/lesson/edit.jsp</result>
+            <result name="add">/WEB-INF/jsp/lesson/edit.jsp</result>
+            <result name="input">/WEB-INF/jsp/lesson/edit.jsp</result>
+            <result name="search">/WEB-INF/jsp/lesson/search.jsp</result>
+        </action>
+
+    </package>
+</struts>

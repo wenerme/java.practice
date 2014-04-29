@@ -1,0 +1,83 @@
+在给model赋值的时候,也给action赋值 ?
+--------------------------
+在使用 ModelDrive 的时候,会先把 model 放到 ValueStack 里
+
+覆盖 properties 的值 ?
+-----------------------
+location 可以用逗号分隔设置多个值
+
+validate方法里 不返回input,返回指定的值 ?
+-----------------------------------------
+
+* 这个值是在 workflow 阶段决定的,有好几个方法可以更改
+	1. 更改 拦截器的input参数
+	2. 实现 ValidationWorkflowAware
+	3. 使用 InputConfig 注解
+	4. 实现 ValidationErrorAware 
+
+如何在 struts 配置结果名里引用 方法的静态字段?
+-----------------------------------------
+	
+关于抽象 Service 和 抽象 Action 的实现
+抽象 Service 需要一个抽象的 Dao,因此会有三个类型参数
+
+Action因为确定了ID 为Long 只需要两个类型参数(因为需要从String 转换出 ID 类型)
+关于这点,可以考虑在basedao和baseservice里实现一个 id(String id) 方法,这个方法也比较实用
+	
+关于 OGNL 的 # % $ 
+http://stackoverflow.com/questions/8007858/whats-the-difference-between-and-signs-in-struts-tags
+	
+这个项目的限制
+--------------
+
+* 在 Action 逻辑层 ID 必须为 Long
+
+抽象时,选择你需要的东西
+
+在 service 调用其他 service 的时候,我应该用 它的 dao 还是service
+-----------------------------------------------------------------
+
+service: 同级的,功能更面向逻辑
+dao: service 本来是操作dao.
+
+或者说我应该把 这样的 service 提到 action.这样 service 的职责就更加的明了了~
+
+
+查询解决方案
+-----------
+1.
+query.and(
+	helper.with(searcher)
+		.like().skipNull().on(Attr ... attrs).done(), 
+	helper.with(searcher)
+		.eq().skilpNull().on(...).done());
+		
+2.
+wither = helper.with(searcher);
+wither.skipNullOrEmpty(Attr ... attr)// 这里需要是一个包装类
+	.orLike()
+	// 在这个 orLike 里调用的其实也是 wither.orLike(Attr ... attr)
+	// 但是这样的写法我更稀饭
+	// 第一种解决方法其实是这个解决方案更链化的一种
+	
+wither.orLike(wither.skipNullOrEmpty(Attr ... attr))// 这里便不需要包装类
+
+现在的格式, 实现的复杂性大大降低了~~~,而且这个可以很容易的扩展为以上的模式
+
+helper.like(searcher, LogicMode.OR, Attr ... attr)
+helper.eq(searcher, LogicMode.AND, Attr ... attr)
+
+LikeWrap
+	.Head
+	.Tail
+	.Both
+	.None
+	
+更新解决方案
+------------
+
+为了避免写大量的更新代码,考虑写一套统一的,简单的更新解决方案
+
+updateTo(entity, model, Attr ... attrs)
+
+	
