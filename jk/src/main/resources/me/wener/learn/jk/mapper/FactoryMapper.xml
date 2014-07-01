@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.wener.learn.jk.mapper.FactoryMapper">
+    <resultMap type="factory" id="result">
+        <id property="id" column="FACTORY_ID"/>
+        <result property="fullName" column="FULL_NAME"/>
+        <result property="factoryName" column="FACTORY_NAME"/>
+        <result property="contacts" column="CONTACTS"/>
+        <result property="phone" column="PHONE"/>
+        <result property="mobile" column="MOBILE"/>
+        <result property="fax" column="FAX"/>
+        <result property="note" column="NOTE"/>
+        <result property="inspector" column="INSPECTOR"/>
+        <result property="orderNo" column="ORDER_NO"/>
+        <result property="state" column="STATE"/>
+
+        <result property="createBy" column="CREATE_BY"/>
+        <result property="createDept" column="CREATE_DEPT"/>
+        <result property="createTime" column="CREATE_TIME"/>
+    </resultMap>
+
+    <sql id="table-name">FACTORY_C</sql>
+    <sql id="table-id">FACTORY_ID</sql>
+
+
+    <select id="count" resultType="long">
+        <include refid="Core.count"/>
+    </select>
+    <select id="findAll" resultMap="result">
+        <include refid="Core.findAll"/>
+    </select>
+
+    <select id="findById"
+            parameterType="long"
+            resultMap="result"
+            useCache="true">
+        <include refid="Core.findById"/>
+    </select>
+
+    <select id="findByIds" parameterType="list" resultMap="result" useCache="true">
+        <include refid="Core.findByIds"/>
+    </select>
+
+    <delete id="deleteById" parameterType="long">
+        <include refid="Core.deleteById"/>
+
+    </delete>
+
+    <delete id="deleteByIds" parameterType="list">
+        <include refid="Core.findByIds"/>
+
+    </delete>
+
+    <!--需要具体类型参数的方法-->
+    <delete id="delete" parameterType="factory">
+        <include refid="Core.delete"/>
+    </delete>
+</mapper>

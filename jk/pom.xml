@@ -1,0 +1,166 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>me.wener.learn.jk</groupId>
+    <artifactId>jk</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>jk Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <!--程序的主要配置-->
+        <cbhistory.version>0.5.8</cbhistory.version>
+        <app.start.class>me.wener.cbhistory.core.App</app.start.class>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.7</java.version>
+
+        <!--外围配置-->
+        <c3p0.version>0.9.5-pre8</c3p0.version>
+        <gson.version>2.2.4</gson.version>
+        <guava.version>17.0</guava.version>
+        <guice.version>4.0-beta</guice.version>
+        <hibernate.version>4.3.5.Final</hibernate.version>
+        <jetty.version>8.1.14.v20131031</jetty.version>
+        <joda-time.version>2.3</joda-time.version>
+        <jodd.version>3.5.2</jodd.version>
+        <junit.version>4.11</junit.version>
+        <logback.version>1.1.2</logback.version>
+        <lombok.version>1.12.6</lombok.version>
+        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+        <mybatis.version>3.2.7</mybatis.version>
+        <mysql-connector.version>5.1.29</mysql-connector.version>
+        <ormlite-core.version>4.48</ormlite-core.version>
+        <querydsl.version>3.3.4</querydsl.version>
+        <servlet-api.version>3.0.1</servlet-api.version>
+        <slf4j.version>1.7.7</slf4j.version>
+        <spring.version>4.0.3.RELEASE</spring.version>
+        <spring-boot-starter.version>1.0.2.RELEASE</spring-boot-starter.version>
+        <spring-data-jpa.version>1.5.2.RELEASE</spring-data-jpa.version>
+    </properties>
+
+    <dependencies>
+
+        <!--google's-->
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+
+        <!--辅助-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+            <!--<scope>provided</scope>-->
+        </dependency>
+        <!--spring-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--mybatis-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+
+        <!--DB-->
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>${c3p0.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.3</version>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <finalName>jk</finalName>
+    </build>
+    <repositories>
+        <repository>
+            <id>nexus-osc</id>
+            <url>http://maven.oschina.net/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>http://repo.spring.io/libs-milestone</url>
+        </repository>
+        <repository>
+            <id>codelds</id>
+            <url>https://code.lds.org/nexus/content/groups/main-repo</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>org.jboss.repository.releases</id>
+            <name>JBoss Maven Release Repository</name>
+            <url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+</project>
