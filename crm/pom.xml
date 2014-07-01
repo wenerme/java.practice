@@ -96,11 +96,17 @@
             <version>${struts2.version}</version>
         </dependency>
         <!--实现 REST 服务-->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.struts</groupId>-->
-            <!--<artifactId>struts2-convention-plugin</artifactId>-->
-            <!--<version>${struts2.version}</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-convention-plugin</artifactId>
+            <version>${struts2.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-junit-plugin</artifactId>
+            <version>${struts2.version}</version>
+        </dependency>
 
         <!--<dependency>-->
             <!--<groupId>org.apache.struts</groupId>-->
