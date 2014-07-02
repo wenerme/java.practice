@@ -17,5 +17,8 @@
         <context:include-filter type="annotation" expression="javax.inject.Named"/>
     </context:component-scan>
 
+    <!--校验框架-->
+    <!--<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>-->
 
+    <!--<bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor"/>-->
 </beans>

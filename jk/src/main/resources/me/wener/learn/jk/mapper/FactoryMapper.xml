@@ -24,7 +24,8 @@
 
     <sql id="table-name">FACTORY_C</sql>
     <sql id="table-id">FACTORY_ID</sql>
-
+    <sql id="table-columns">FACTORY_ID,FULL_NAME,FACTORY_NAME,CONTACTS,PHONE,MOBILE,FAX,NOTE,INSPECTOR,ORDER_NO,STATE,CREATE_BY,CREATE_DEPT,CREATE_TIME</sql>
+    <sql id="object-fields">#{id,jdbcType=VARCHAR},#{fullName,jdbcType=VARCHAR},#{factoryName,jdbcType=VARCHAR},#{contacts,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{mobile,jdbcType=VARCHAR},#{fax,jdbcType=VARCHAR},#{note,jdbcType=VARCHAR},#{inspector,jdbcType=VARCHAR},#{orderNo,jdbcType=INTEGER},#{state,jdbcType=VARCHAR},#{createBy,jdbcType=VARCHAR},#{createDept,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP}</sql>
 
     <select id="count" resultType="long">
         <include refid="Core.count"/>
@@ -34,7 +35,6 @@
     </select>
 
     <select id="findById"
-            parameterType="long"
             resultMap="result"
             useCache="true">
         <include refid="Core.findById"/>
@@ -58,4 +58,45 @@
     <delete id="delete" parameterType="factory">
         <include refid="Core.delete"/>
     </delete>
+
+    <insert id="insert" parameterType="factory">
+        insert into <include refid="table-name"/>
+		( <include refid="table-columns"/> )
+		values
+		( <include refid="object-fields"/> )
+    </insert>
+
+    <update id="update" parameterType="factory">
+        update <include refid="table-name"/>
+        <set>
+            <if test="fullName != null">FULL_NAME=#{fullName},</if>
+            <if test="factoryName != null">FACTORY_NAME=#{factoryName},</if>
+            <if test="contacts != null">CONTACTS=#{contacts},</if>
+            <if test="phone != null">PHONE=#{phone},</if>
+            <if test="mobile != null">MOBILE=#{mobile},</if>
+            <if test="fax != null">FAX=#{fax},</if>
+            <if test="note != null">NOTE=#{note},</if>
+            <if test="inspector != null">INSPECTOR=#{inspector},</if>
+            <if test="orderNo != null">ORDER_NO=#{orderNo},</if>
+            <if test="state != null">STATE=#{state},</if>
+
+            <if test="createBy != null">CREATE_BY=#{createBy},</if>
+            <if test="createDept != null">CREATE_DEPT=#{createDept},</if>
+            <if test="createTime != null">CREATE_TIME=#{createTime},</if>
+        </set>
+        where <include refid="table-id"/>=#{id}
+    </update>
+
+    <update id="updateState">
+        update <include refid="table-name"/>
+        set state = #{state}
+        where <include refid="table-id"/> in
+        <foreach collection="list"
+                 item="id"
+                 separator=","
+                 open="("
+                 close=")">
+            #{id}
+        </foreach>
+    </update>
 </mapper>

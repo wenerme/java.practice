@@ -12,4 +12,8 @@ public interface BaseMapper<T, ID extends Serializable>
     T findById(ID id);
     List<T> findByIds(List<ID> ids);
     long count();
+
+    // 这两个方法不一定必须实现 :-)
+    void insert(T entity);
+    void update(T entity);
 }

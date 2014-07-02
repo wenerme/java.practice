@@ -1,5 +1,6 @@
 package mybatis;
 
+import com.google.common.collect.Lists;
 import java.util.List;
 import me.wener.learn.jk.domain.Factory;
 import me.wener.learn.jk.mapper.FactoryMapper;
@@ -30,7 +31,26 @@ public class SimpleMyBaties
             System.out.println("count " + mapper.count());
         }
     }
+    @Test
+    public void changeState()
+    {
+        try (SqlSession sqlSession = factory.openSession())
+        {
+            FactoryMapper mapper = sqlSession.getMapper(FactoryMapper.class);
+            Factory factory = mapper.findAll().get(0);
+            int i = mapper.updateState(Lists.newArrayList(factory.getId()), Factory.STATE_DISABLE);
+            System.out.println("result "+i);
 
+            factory = mapper.findById(factory.getId());
+            assert factory.getState().equals(Factory.STATE_DISABLE);
+
+            mapper.updateState(Lists.newArrayList(factory.getId()), Factory.STATE_ENABLE);
+            System.out.println("result "+i);
+
+            factory = mapper.findById(factory.getId());
+            assert factory.getState().equals(Factory.STATE_ENABLE);
+        }
+    }
     @Test
     public void findAll()
     {

@@ -174,7 +174,7 @@
 		});
 		
 		function logout(){
-			return formSubmit("${ctx}/.action", "_top");
+			return formSubmit("${ctx}/frmain.action", "_top");
 		}
 </script>
 	
