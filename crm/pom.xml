@@ -9,7 +9,7 @@
 
 	<!-- 配置属性 -->
     <properties>
-        <struts2.version>2.3.16.1</struts2.version>
+        <struts2.version>2.5.22</struts2.version>
         <spring.version>4.0.3.RELEASE</spring.version>
 
         <jdk.version>1.7</jdk.version>
