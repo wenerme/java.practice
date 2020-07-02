@@ -31,7 +31,7 @@
         <lombok.version>1.12.6</lombok.version>
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <mybatis.version>3.2.7</mybatis.version>
-        <mysql-connector.version>5.1.29</mysql-connector.version>
+        <mysql-connector.version>8.0.16</mysql-connector.version>
         <ormlite-core.version>4.48</ormlite-core.version>
         <querydsl.version>3.3.4</querydsl.version>
         <servlet-api.version>3.0.1</servlet-api.version>
